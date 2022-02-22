@@ -1,53 +1,71 @@
+<!-- <style>
+   .content{
+      max-width: 500px;
+      margin: :auto;
+   }
+</style> -->
 <mat-toolbar>
     <span>Registration</span>
  </mat-toolbar>
  <mat-card class="my-card">
     <mat-card-content>
-        <form class="my-form">
-           <mat-form-field class="full-width">
-                  <mat-label>First Name</mat-label>
-                  <input  matInput  placeholder="First name"  name="fname"  required>
+        <form [formGroup]="registerForm" class="my-form">
+           <mat-form-field appearance="fill">
+                  <mat-label> Name</mat-label>
+                  <input  matInput  placeholder="name"  name="name"  required formControlName="UserName">
+                  <mat-icon matSuffix>person</mat-icon>
+                  <!-- <div *ngIf="registerForm.controls['name'].errors?.required && registerForm.controls['name'].touched"
+                  class="alert alert-danger">this field is required</div>
+                  <div *ngIf="registerForm.controls['name'].errors?.minLength && registerForm.controls['name'].touched"
+                  class="alert alert-danger">this field is must be longer then 2 </div> -->
+               <br>
                </mat-form-field>
-               <mat-form-field class="full-width">
-                  <mat-label>Last Name</mat-label>
-                  <input  matInput  placeholder="Last Name" name="lname"  required>
-               </mat-form-field>
-               <mat-form-field class="full-width">
-                  <mat-label>Address</mat-label>
-                  <input  matInput  placeholder="Address" name="address"  required>
-               </mat-form-field>
-               <mat-form-field class="full-width">
+            
+               <div>
+               <mat-form-field  appearance="fill">
                   <mat-label>Email</mat-label>
-                  <input  matInput  placeholder="Email" name="email">
+                  <input  matInput  placeholder="Email" matInput [type]="hide ? 'email' : 'text'"  name="email"formControlName="Email" >
+                  <mat-icon matSuffix>email</mat-icon>
                </mat-form-field>
-               <mat-form-field class="full-width">
+            </div>
+               <br>
+               <div>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Enter your Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" id="password" formControlName="Password">
+                    <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </mat-form-field>
+                </div>
+          
+               <!-- <mat-form-field class="full-width">
                   <mat-label>Password</mat-label>
-                  <input  matInput  placeholder="Password"  name="password">
-               </mat-form-field>
-
-               <section class="example-section">
+                  <input  matInput  placeholder="Password"  name="password" type="password">
+               </mat-form-field> -->
+               <br>
+               <!-- <section class="example-section">
                 <label class="example-margin">Gender:</label>
                 <mat-radio-group>
-                <!-- <mat-radio-group [(ngModel)]="gender"> -->
-                  <mat-radio-button class="example-margin" value="after">Male</mat-radio-button>
+                <mat-radio-group [(ngModel)]="gender">
+                   <mat-radio-button class="example-margin" value="after">Male</mat-radio-button>
                   <mat-radio-button class="example-margin" value="before">Female</mat-radio-button>
                   <mat-radio-button class="example-margin" value="before">Other</mat-radio-button>
-                </mat-radio-group>
-              </section>
+                </mat-radio-group> -->
+              <!-- </section>
            
               <mat-form-field>
                 <mat-label>Date of Birth</mat-label>
             <input matInput [matDatepicker]="picker" placeholder="Choose a date">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+          </mat-form-field> --> 
         </form>
       </mat-card-content>
  
  
     <mat-card-actions>
       <!-- REGISTER BUTTON -->
-      <!-- <button mat-raised-button (click)="register()" color="primary">REGISTER</button> -->
+      <button mat-raised-button [disabled]="registerForm.invalid" (click)="register()" color="primary">REGISTER</button>
 
     </mat-card-actions>
  </mat-card>

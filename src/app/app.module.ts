@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import{MatNativeDateModule} from '@angular/material/core';
-import{MatIconModule} from '@angular/material/icon';
+import{MatIcon, MatIconModule} from '@angular/material/icon';
 import{MatCheckboxModule} from '@angular/material/checkbox';
 import{MatCardModule}from '@angular/material/card';
 import{MatFormFieldModule}from '@angular/material/form-field';
@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { EventModule } from './event/event.module';
 import { GuestModule } from './guest/guest.module';
 import {MatButtonModule}from '@angular/material/button';
+import{BrowserAnimationsModule}from '@angular/platform-browser/animations'
 // import {  MatToolbar} from '@angular/material/toolbar';
 import {  MatToolbarModule} from '@angular/material/toolbar';
 // import {  MatToolbarRow} from '@angular/material/toolbar';
@@ -40,6 +41,7 @@ import { LoginComponentComponent } from './login-component/login-component.compo
     ]),  
     EventModule,
     GuestModule,
+    ReactiveFormsModule,
     MatSliderModule,
     // MatToolbarRow,
     // MatToolbar,
@@ -56,7 +58,8 @@ import { LoginComponentComponent } from './login-component/login-component.compo
      ,MatFormFieldModule
      ,MatInputModule,
      MatListModule,
-     MatRadioModule
+     MatRadioModule,
+     BrowserAnimationsModule
     
      
     

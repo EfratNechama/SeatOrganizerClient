@@ -76,7 +76,8 @@
               "browserTarget": "SeatOrganizerNG2:build:production"
             },
             "development": {
-              "browserTarget": "SeatOrganizerNG2:build:development"
+              "browserTarget": "SeatOrganizerNG2:build:development",
+              "proxyConfig": "src/proxy.config.json"
             }
           },
           "defaultConfiguration": "development"

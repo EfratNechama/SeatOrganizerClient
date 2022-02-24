@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators ,ReactiveFormsModule} from '@angular/forms';
 import { User } from 'src/models/User';
 import { AppService } from '../app.service';
-
+import { Router,ActivatedRoute,ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-registration-component',
@@ -19,35 +19,36 @@ export class RegistrationComponentComponent implements OnInit {
   //       ],
   //   }); 
 
-  constructor(private _appService:AppService) { }
+  constructor(private _appService:AppService,private _route:Router) { }
 
   ngOnInit(): void {
 
   }
 @Input()
-user!:User;
+_user!:User;
 
 @Output()
 onCreateUser:EventEmitter<User>=new EventEmitter();
 
   hide=true
   registerForm:FormGroup=new FormGroup({
-    "Id":new FormControl(0),
+    "id":new FormControl(0),
     "userName":new FormControl("",[Validators.required,Validators.minLength(2)]),
-    "Email":new FormControl("",[Validators.required,Validators.email]),
-    "Password":new FormControl("",[Validators.required,Validators.minLength(7)]),
+    "email":new FormControl("",[Validators.required,Validators.email]),
+    "password":new FormControl("",[Validators.required,Validators.minLength(7)]),
 
   })
 
   
 
   register(){
-    this.user=this.registerForm.value;
-    console.log(this.user);
-    this.onCreateUser.emit(this.user);
-    this._appService.createNewUser(this.user).subscribe(
+    this._user=this.registerForm.value;
+    console.log(this._user);
+    this.onCreateUser.emit(this._user);
+    this._appService.createNewUser(this._user).subscribe(
       succes=>{
 alert("succes create user");
+this._route.navigate(['/event-list',this._user])
       },
       err=>{
         alert("failed create user");

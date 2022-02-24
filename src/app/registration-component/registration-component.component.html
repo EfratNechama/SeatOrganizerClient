@@ -10,21 +10,23 @@
  <mat-card class="my-card">
     <mat-card-content>
         <form [formGroup]="registerForm" class="my-form">
+         <div>
            <mat-form-field appearance="fill">
                   <mat-label> Name</mat-label>
-                  <input  matInput  placeholder="name"  name="name"  required formControlName="UserName">
+                  <input  matInput  name="name"  required formControlName="userName">
                   <mat-icon matSuffix>person</mat-icon>
                   <!-- <div *ngIf="registerForm.controls['name'].errors?.required && registerForm.controls['name'].touched"
                   class="alert alert-danger">this field is required</div>
                   <div *ngIf="registerForm.controls['name'].errors?.minLength && registerForm.controls['name'].touched"
                   class="alert alert-danger">this field is must be longer then 2 </div> -->
-               <br>
+              
                </mat-form-field>
-            
+            </div>
+            <br>
                <div>
                <mat-form-field  appearance="fill">
                   <mat-label>Email</mat-label>
-                  <input  matInput  placeholder="Email" matInput [type]="hide ? 'email' : 'text'"  name="email"formControlName="Email" >
+                  <input  matInput  matInput [type]="hide ? 'email' : 'text'"  name="email"formControlName="email" >
                   <mat-icon matSuffix>email</mat-icon>
                </mat-form-field>
             </div>
@@ -32,9 +34,10 @@
                <div>
                   <mat-form-field appearance="fill">
                     <mat-label>Enter your Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" id="password" formControlName="Password">
+                    <input matInput [type]="hide ? 'password' : 'text'" name="password" formControlName="password">
                     <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                       {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      <mat-hint>at least 8 characters</mat-hint>
                   </mat-form-field>
                 </div>
           

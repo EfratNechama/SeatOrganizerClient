@@ -1,7 +1,7 @@
 export class Table {
-    public Id: number;
-    public IsSpecial: boolean;
-    public NumChair: number;
-    public EventId: number;
-    public GenderId: number;
+    public id?: number;
+    public isSpecial?: boolean;
+    public numChair?: number;
+    public eventId?: number;
+    public genderId?: number;
 }

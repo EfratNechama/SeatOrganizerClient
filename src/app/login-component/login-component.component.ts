@@ -4,6 +4,7 @@ import { LogIn } from 'src/models/LogIn';
 import { Input,Output } from '@angular/core';
 import { AppService } from '../app.service';
 import { User } from 'src/models/User';
+import { Router,ActivatedRoute,ParamMap } from '@angular/router';
 @Component({
   selector: 'app-login-component',
   templateUrl: './login-component.component.html',
@@ -11,7 +12,7 @@ import { User } from 'src/models/User';
 })
 export class LoginComponentComponent implements OnInit {
 
-  constructor(private _appService:AppService) { }
+  constructor(private _appService:AppService, private _route:Router) { }
 
   ngOnInit(): void {
   }
@@ -24,20 +25,12 @@ loginUser!:LogIn;
 
 loginForm:FormGroup=new FormGroup({
   
-  "Email":new FormControl("",[Validators.required,Validators.email]),
-  "Password":new FormControl("",[Validators.required,Validators.minLength(7)]),
+  "email":new FormControl("",[Validators.required,Validators.email]),
+  "password":new FormControl("",[Validators.required,Validators.minLength(7)]),
 
 })
-// login() {
-//   this.userService.getUser(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value).subscribe(data => {
-//     this.userService.user = data
-//     if (this.userService.user == null) {
-//       alert("שם המשתמש או הסיסמא אינם תקינים, נסה שנית")
-//         return;
-//     }
-//     alert(`welcome to ${this.userService.user.name}`)
-//     this.router.navigate(['/home'])});
-// }
+
+
 
 login()
 {
@@ -49,6 +42,7 @@ login()
         this._user=data;
         alert("LogIn success :) welcome "+this._user.userName);
         console.log(this._user);
+        this._route.navigate(['/event-list',this._user])
       }
       else
       {

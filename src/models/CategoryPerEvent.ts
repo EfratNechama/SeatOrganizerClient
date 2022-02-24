@@ -1,6 +1,6 @@
 export class CategoryPerEvent {
-    public Id: number;
-    public EventId:number;
-    public CategoryId:number;
+    public id?: number;
+    public eventId?:number;
+    public categoryId?:number;
    
 }

@@ -1,6 +1,6 @@
 export class EventPerUser {
-    public Id: number;
-    public EventId:number;
-    public UserId:number;
+    public id?: number;
+    public eventId?:number;
+    public userId?:number;
 
 }

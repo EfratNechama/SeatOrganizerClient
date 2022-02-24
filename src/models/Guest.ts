@@ -1,17 +1,17 @@
 export class Guest {
-    public Id: number;
-    public EventId:number;
-    public FirstName:string;
-    public LastName: string;
-    public Phone:string;
-    public Email:string;
-    public Confirmed:boolean;
-    public CategotyId:number;
-    public UserId: number;
-    public IdentifyName:string;
-    public IdentifyImage:ImageBitmap;
-    public NumFamilyMembersMale:number;
-    public NumFamilyMembersFemale:number;
+    public id?: number;
+    public eventId?:number;
+    public firstName?:string;
+    public lastName?: string;
+    public phone?:string;
+    public email?:string;
+    public confirmed?:boolean;
+    public categotyId?:number;
+    public userId?: number;
+    public identifyName?:string;
+    public identifyImage?:ImageBitmap;
+    public numFamilyMembersMale?:number;
+    public numFamilyMembersFemale?:number;
 
 
 

@@ -1,14 +1,14 @@
 export class Event {
-    public Id: number;
-    public SeperatedSeats:boolean;
-    public NumTablesMale:number;
-    public NumTablesFemale?:number;
-    public NumChairsMale:number;
-    public NumChairsFemale?:number;
-    public NumSpecialTableChairsMale:number;
-    public NumSpecialTableChairsfemale?:number;
-    public InvitationImage?:ImageBitmap
-    public DateToSendEmail?:Date;
+    public id?: number;
+    public seperatedSeats?:boolean;
+    public numTablesMale?:number;
+    public numTablesFemale?:number;
+    public numChairsMale?:number;
+    public numChairsFemale?:number;
+    public numSpecialTableChairsMale?:number;
+    public numSpecialTableChairsfemale?:number;
+    public invitationImage?:ImageBitmap
+    public dateToSendEmail?:Date;
     //ch///
 
 }

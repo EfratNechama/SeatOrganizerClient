@@ -17,12 +17,11 @@ import { EventModule } from './event/event.module';
 import { GuestModule } from './guest/guest.module';
 import {MatButtonModule}from '@angular/material/button';
 import{BrowserAnimationsModule}from '@angular/platform-browser/animations'
-// import {  MatToolbar} from '@angular/material/toolbar';
 import {  MatToolbarModule} from '@angular/material/toolbar';
-// import {  MatToolbarRow} from '@angular/material/toolbar';
 import { MatSliderModule } from '@angular/material/slider';
 import { RegistrationComponentComponent } from './registration-component/registration-component.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
+import { EventListComponent } from './event/event-list/event-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,13 +37,13 @@ import { LoginComponentComponent } from './login-component/login-component.compo
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: 'register', component: RegistrationComponentComponent },
       { path: 'login', component: LoginComponentComponent },
-    ]),  
+      { path: 'event-list', component: EventListComponent },],
+       {useHash:true}),  
     EventModule,
     GuestModule,
     ReactiveFormsModule,
     MatSliderModule,
-    // MatToolbarRow,
-    // MatToolbar,
+    AppRoutingModule ,
     MatToolbarModule,
     MatButtonModule,
     MatNativeDateModule,

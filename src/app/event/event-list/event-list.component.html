@@ -1,1 +1,30 @@
-<p>event-list works!</p>
+
+
+
+ <button (click)="newEvent()">create new event</button>
+ <table>
+     <tr *ngFor="let e of _eventList">
+         <td>
+            id: {{e.id}}
+         </td>
+         <td>
+            date:
+         </td>
+         <td>
+            <button>update details</button>
+         </td>
+         <td>
+            <button> view my geusts </button>
+         </td>
+         <td>
+            <button> delete event </button>
+         </td>
+     </tr>
+ </table>
+ 
+ 
+ 
+
+
+
+

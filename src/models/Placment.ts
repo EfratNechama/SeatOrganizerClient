@@ -1,5 +1,5 @@
 export class Placment {
-    public Id: number;
-    public TableId:number;
-    public GuestId:number
+    public id?: number;
+    public tableId?:number;
+    public guestId?:number
 }

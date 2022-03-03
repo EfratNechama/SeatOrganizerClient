@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UserService } from 'src/app/user/user.service';
 import { Guest } from 'src/models/Guest';
+import { GuestService } from '../guest.service';
 
 @Component({
   selector: 'app-guest-details',
@@ -9,7 +11,7 @@ import { Guest } from 'src/models/Guest';
 })
 export class GuestDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _guestService: GuestService, private _userService: UserService) { }
 
   ngOnInit(): void {
 
@@ -17,6 +19,7 @@ export class GuestDetailsComponent implements OnInit {
 
 
   _guest!: Guest;
+
 
   guestDetailsForm: FormGroup = new FormGroup({
     "id": new FormControl(0),
@@ -27,7 +30,8 @@ export class GuestDetailsComponent implements OnInit {
     "email": new FormControl(null, [Validators.email, Validators.required]),
     "confirmed": new FormControl(false),
     //צריך עיון
-    "categotyId": new FormControl(0),
+    "categotyId": new FormControl(13),
+    "userId": new FormControl(this._userService._user.id),
     "identifyName": new FormControl(null),
     "identifyImage": new FormControl(null),
     "numFamilyMembersMale": new FormControl(0),
@@ -36,14 +40,16 @@ export class GuestDetailsComponent implements OnInit {
 
   })
   _show: boolean = false;
-  addNewguest() {
+  // addNewguest() {
+  //   this._guest = this.guestDetailsForm.value;
+  // }
+  saveWithoutSending() {
     this._guest = this.guestDetailsForm.value;
-  }
-  saveAndNotSend() {
-
+    this._guestService.postGuest(this._guest, false).subscribe(succ => { console.log(this._guest, false) }, err => { console.log("error") })
   }
   saveAndSend() {
-
+    this._guest = this.guestDetailsForm.value;
+    this._guestService.postGuest(this._guest, true).subscribe(succ => { console.log(this._guest, false) }, err => { console.log("error") })
   }
 }
 

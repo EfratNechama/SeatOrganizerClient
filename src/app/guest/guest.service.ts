@@ -20,6 +20,11 @@ getGuestListByEventId(eId:number):Observable<Guest[]>
   return this.http.get<Guest[]>("api/Guest/"+eId);
 }
 
+postGuest(g:Guest , send:boolean):Observable<any>
+{ debugger;
+  return this.http.post<any>("api/Guest/" +send , g);
+}
+
 deleteGuest(gId:number):Observable<number>
 {
   return this.http.delete<number>("api/Guest/"+gId);

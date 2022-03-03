@@ -2,7 +2,7 @@ import { ThisReceiver } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators ,ReactiveFormsModule} from '@angular/forms';
 import { User } from 'src/models/User';
-import { AppService } from '../app.service';
+import { UserService } from '../user.service';
 import { Router,ActivatedRoute,ParamMap } from '@angular/router';
 
 @Component({
@@ -19,13 +19,13 @@ export class RegistrationComponentComponent implements OnInit {
   //       ],
   //   }); 
 
-  constructor(private _appService:AppService,private _route:Router) { }
+  constructor(private _userService:UserService,private _route:Router) { }
 
   ngOnInit(): void {
 
   }
 @Input()
-_user!:User;
+//_user!:User;
 
 @Output()
 onCreateUser:EventEmitter<User>=new EventEmitter();
@@ -42,13 +42,13 @@ onCreateUser:EventEmitter<User>=new EventEmitter();
   
 
   register(){
-    this._user=this.registerForm.value;
-    console.log(this._user);
-    this.onCreateUser.emit(this._user);
-    this._appService.createNewUser(this._user).subscribe(
+    this._userService._user=this.registerForm.value;
+    console.log(this._userService._user);
+    //this.onCreateUser.emit(this._user);
+    this._userService.createNewUser(this._userService._user).subscribe(
       succes=>{
-alert("succes create user");
-this._route.navigate(['/event-list',this._user])
+    alert("succes create user");
+    this._route.navigate(['/event-list',this._userService._user])
       },
       err=>{
         alert("failed create user");

@@ -1,1 +1,27 @@
-<p>guest-details works!</p>
+
+<form [formGroup]="guestDetailsForm" class="my-form">
+    <div>
+        <label>first name</label>
+        <input formControlName="firstName">
+    </div>
+    <div>
+        <label>last name</label>
+        <input formControlName="lastName">
+    </div>
+    <div>
+        <label>phone</label>
+        <input formControlName="phone">
+    </div>
+    <div>
+        <label>email</label>
+        <input formControlName="email">
+    </div>
+    <div>
+        <select>
+            seleect category:
+        </select>
+    </div>
+    <div>
+        <button (click)="saveAndSend()">save and send email</button>
+        <button (click)="saveAndNotSend()">save </button>
+    </div>

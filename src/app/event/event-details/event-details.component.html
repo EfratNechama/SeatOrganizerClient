@@ -1,33 +1,115 @@
 <p>event-details works!</p>
+<form [formGroup]="eventDetailsForm" class="my-form">
 
-<!-- <mat-toolbar>
-    <span>Event Details</span>
- </mat-toolbar>
- <mat-card class="my-card">
-    <mat-card-content> -->
-        <form [formGroup]="eventDetailsForm" class="my-form">
-          
-            
-               <div>
-               <mat-form-field  appearance="fill">
-                  <mat-label>seperated seats?</mat-label>
-                  <mat-radio-group >
-                    <mat-radio-button class="example-margin" onclick="seperated()">yes</mat-radio-button>
-                    <mat-radio-button class="example-margin" >no</mat-radio-button>
-                   </mat-radio-group>
-               </mat-form-field>
-            </div>
+
+
+
+   <label>seperated?</label>
+   <br>
+   <input type="radio" name="seats" (click)="seperated()"> yes
+   <input type="radio" name="seats" (click)="noSeperated()"> no
+
+
+   <div *ngIf="_seperated">
+      <label>number of chairs special table female</label>
+      <input formControlName="numSpecialTableChairsFemale">
+      <br>
+      <label>number of chairs female</label>
+      <input formControlName="numChairsFemale">
+      <br>
+      <label>number of tabels female</label>
+      <input formControlName="numTablesFemale">
+      <br>
+
+      <label>number of chairs male</label>
+      <input formControlName="numChairsMale">
+      <br>
+      <label>number of tabels male</label>
+      <input formControlName="numTablesMale">
+      <br>
+
+      <input type="checkbox" (click)="wantSpeciale()">you can create one special table, do you want?
+      <div *ngIf="_speciale">
+         <label>number of chairs male in special table female</label>
+         <input formControlName="numSpecialTableChairsFemale">
+         <br>
+         <label>number of chairs special table male</label>
+         <input formControlName="numSpecialTableChairsMale">
+         <br>
+         <label>number of chairs in special table male</label>
+         <input formControlName="numSpecialTableChairsMale">
+      </div>
+
+   </div>
+
+
+   <div *ngIf="_noSeperate">
+      <label>number of chairs special table </label>
+      <input formControlName="numSpecialTableChairsFemale">
+      <br>
+      <label>number of chairs </label>
+      <input formControlName="numChairsFemale">
+      <br>
+      <label>number of tabels </label>
+      <input formControlName="numTablesFemale">
+      <br>
+      <input type="checkbox" (click)="wantSpeciale()">you can create one special table, do you want?
+   <div *ngIf="_speciale"> 
+      <label>number of chairs in special table male</label>
+      <input formControlName="numSpecialTableChairsMale">
+   </div>
+   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <label>upload your invitation<label>
+         <input type="image" formControlName="invitationImage">
+         <br>
+
+
+
+
+
+         <label>event date<label>
+               <input type="date" formControlName="eventDate">
                <br>
 
-              
-        </form>
-      <!-- </mat-card-content>
- 
- 
-    <mat-card-actions>
-      <!-- REGISTER BUTTON -->
-      <!-- <button mat-raised-button [disabled]="loginForm.invalid" (click)="login()" color="primary">LOGIN</button> -->
- 
-    <!-- </mat-card-actions> -->
- <!-- </mat-card> -->
+               <button (click)="selectCaregory()">select caregory</button>
 
+               <div *ngFor="let c of _generalCategory">
+                  <input type="checkbox" name={{c.name}} value={{c.name}}>{{c.name}}
+               </div>
+
+
+               <!-- <section class="example-section" [formGroup]="categoryGroup">
+   <h4>Select your categories:</h4>
+   <div *ngFor="let c of _generalCategory">
+      <p><mat-checkbox formControlName="name">{{c.name}}</mat-checkbox></p>
+   </div>
+ 
+ </section> -->
+
+               <br>
+               <button>add new category</button>
+               <input placeholder="name" #addedCat>
+               <br>
+
+               <button (click)="addPersonalCategory(addedCat.value)">add to category list</button>
+
+
+               <br>
+               <br>
+               <br>
+               <button (click)="saveNewEvent()">save</button>

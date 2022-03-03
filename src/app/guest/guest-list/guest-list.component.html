@@ -1,1 +1,41 @@
 <p>guest-list works!</p>
+
+
+<table>
+    <tr *ngFor="let g of _guestList">
+        <td>
+           first name: {{g.firstName}}
+        </td>
+        <td>
+            last name: {{g.lastName}}
+         </td>
+        <td>
+            phone: {{g.phone}}
+        </td>
+        <td>
+            email: {{g.email}}
+        </td>
+        <td>
+            confirmed: {{g.confirmed}}
+        </td>
+        <td>
+            categotyId: {{g.confirmed}}
+        </td>
+        <td>
+            userId: {{g.userId}}
+        </td>
+        <td>
+           <button>update details</button>
+        </td>
+        <td>
+           <button > send email </button>
+        </td>
+        <td>
+           <button (click)="deleteGuest(g)"> delete guest </button>
+        </td>
+    </tr>
+</table>
+<button (click)="newGuest()" >Add another guest</button>
+<app-guest-details *ngIf="_show" #guestDetails></app-guest-details>
+
+

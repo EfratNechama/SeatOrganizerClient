@@ -1,5 +1,5 @@
 export class Guest {
-    public id?: number;
+    public id: number;
     public eventId?:number;
     public firstName?:string;
     public lastName?: string;
@@ -13,6 +13,22 @@ export class Guest {
     public numFamilyMembersMale?:number;
     public numFamilyMembersFemale?:number;
 
+    /**
+     *
+     */
+    constructor(id: number,
+          eventId  :number,
+          firstName  :string,
+          lastName  : string,
+          phone  :string,
+          email  :string,
+          confirmed  :boolean,
+          categotyId  :number,
+          userId  : number,
+          identifyName  :string,
+          identifyImage  :ImageBitmap,
+          numFamilyMembersMale  :number,
+          numFamilyMembersFemale  :number,) {this.id=id; }
 
 
 }

@@ -7,11 +7,20 @@ import { User } from 'src/models/User';
 @Injectable({
   providedIn: 'root'
 })
-export class AppService {
+export class UserService {
 
   constructor(private http: HttpClient) {
 
   }
- 
+
+  _user!:User;
+  createNewUser(u: User): Observable<User> {
+    return this.http.post<User>("api/User/" , u);
+  }
+
+  getUserByEmailAndPassword(user:LogIn): Observable<User> {
+
+    return this.http.post<User>("api/LogIn/" , user );
+  }
 
 }

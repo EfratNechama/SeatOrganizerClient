@@ -19,9 +19,14 @@ import {MatButtonModule}from '@angular/material/button';
 import{BrowserAnimationsModule}from '@angular/platform-browser/animations'
 import {  MatToolbarModule} from '@angular/material/toolbar';
 import { MatSliderModule } from '@angular/material/slider';
-import { RegistrationComponentComponent } from './registration-component/registration-component.component';
-import { LoginComponentComponent } from './login-component/login-component.component';
+import { RegistrationComponentComponent } from './user/registration-component/registration-component.component';
+import { LoginComponentComponent } from './user/login-component/login-component.component';
 import { EventListComponent } from './event/event-list/event-list.component';
+import { EventDetailsComponent } from './event/event-details/event-details.component';
+import { GuestListComponent } from './guest/guest-list/guest-list.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,11 +42,15 @@ import { EventListComponent } from './event/event-list/event-list.component';
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: 'register', component: RegistrationComponentComponent },
       { path: 'login', component: LoginComponentComponent },
-      { path: 'event-list', component: EventListComponent },],
+      { path: 'event-list', component: EventListComponent },
+      { path: 'event-details', component: EventDetailsComponent },
+      { path: 'guest-list', component: GuestListComponent }],
        {useHash:true}),  
     EventModule,
     GuestModule,
     ReactiveFormsModule,
+
+
     MatSliderModule,
     AppRoutingModule ,
     MatToolbarModule,
@@ -68,8 +77,7 @@ import { EventListComponent } from './event/event-list/event-list.component';
   exports:[
     MatToolbarModule,
     MatButtonModule,
-    RegistrationComponentComponent,
-    LoginComponentComponent,
+   
     MatNativeDateModule,FormsModule,
 MatDatepickerModule,MatIconModule,MatButtonModule,MatCheckboxModule, MatToolbarModule, MatCardModule,MatFormFieldModule,MatInputModule,MatListModule,MatRadioModule,
   ]

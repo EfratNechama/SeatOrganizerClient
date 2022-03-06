@@ -34,7 +34,7 @@ export class EventDetailsComponent implements OnInit {
   _generalCategory: Category[] = [];
   _personalCategory: string[] = []
   _sendCategory: Category[] = [];
- 
+
   _event!: Event;
   _eventId!: number;
 
@@ -44,12 +44,12 @@ export class EventDetailsComponent implements OnInit {
 
     this._user = this._userService._user;
     console.log(this._user);
-    
+
   }
   _seperated: boolean = false;
-  _noSeperate: boolean = false;
-  _speciale:boolean=false;
-
+  _notSeperate: boolean = false;
+  _special: boolean = false;
+  _personalCat: boolean = false;
   eventDetailsForm: FormGroup = new FormGroup({
     "id": new FormControl(0),
     "seperatedSeats": new FormControl(false),
@@ -94,7 +94,8 @@ export class EventDetailsComponent implements OnInit {
 
 
 
-  selectCaregory() {
+  selectCategory() {
+    this._personalCat = !this._personalCat;
     this._eventService.getGeneralCategory().subscribe(succ => {
       this._generalCategory = succ;
       console.log(this._generalCategory)
@@ -126,28 +127,25 @@ export class EventDetailsComponent implements OnInit {
 
   }
 
-  noSeperated() {
-    this._noSeperate = !this._noSeperate;
-    this._speciale=false;
-    if(this._seperated)
-    {
+  notSeperated() {
+    this._notSeperate = !this._notSeperate;
+    this._special = false;
+    if (this._seperated) {
       this._seperated = !this._seperated;
     }
-   
+
   }
   seperated() {
     this._seperated = !this._seperated;
-    this._speciale=false;
-    if(this._noSeperate)
-    {
-      this._noSeperate = !this._noSeperate;
+    this._special = false;
+    if (this._notSeperate) {
+      this._notSeperate = !this._notSeperate;
 
     }
   }
 
-  wantSpeciale()
-  {
-this._speciale=!this._speciale;
+  wantSpeciale() {
+    this._special = !this._special;
   }
 
   //  <HTMLScriptElement[]><any>document.getElementsByName(id))[0];

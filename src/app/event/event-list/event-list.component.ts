@@ -52,7 +52,12 @@ export class EventListComponent implements OnInit {
   newEvent() {
 
     const dialogRef = this.dialog.open(EventDetailsComponent, {
-      width: '60%',
+      height: '70%',
+      width: '70%',
+
+
+
+
 
     });
 

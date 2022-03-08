@@ -8,6 +8,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserService } from 'src/app/user/user.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -20,7 +21,12 @@ import { UserService } from 'src/app/user/user.service';
 export class EventDetailsComponent implements OnInit {
 
   constructor(private _eventService: EventService, private _activatedRoute: ActivatedRoute, private _userService: UserService,
+    public dialogRef: MatDialogRef<EventDetailsComponent>,
     private _route: Router) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
   @Input()
   _user!: User;
 
@@ -70,7 +76,9 @@ export class EventDetailsComponent implements OnInit {
   })
 
   saveNewEvent() {
+
     this._event = this.eventDetailsForm.value;
+    this.dialogRef.close();
     this._eventService.postEvent(this._event, this._user.id).subscribe(succ => {
       this._eventId = succ;
       console.log(this._eventId);

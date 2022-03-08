@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -25,14 +25,15 @@ import { EventListComponent } from './event/event-list/event-list.component';
 import { EventDetailsComponent } from './event/event-details/event-details.component';
 import { GuestListComponent } from './guest/guest-list/guest-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { UserModule } from './user/user.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationComponentComponent,
-    LoginComponentComponent,
+    // RegistrationComponentComponent,
+    // LoginComponentComponent,
     // GuestDetailsComponent,
 
     // GuestListComponent
@@ -49,6 +50,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
       { useHash: true }),
     EventModule,
     GuestModule,
+    //UserModule,
     ReactiveFormsModule,
 
 

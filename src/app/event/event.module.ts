@@ -14,16 +14,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [EventDetailsComponent, EventListComponent],
   imports: [
     CommonModule, FormsModule, HttpClientModule, BrowserModule,
     ReactiveFormsModule, MatExpansionModule, MatIconModule, MatButtonModule, MatRadioModule,
-    MatInputModule, MatCardModule, MatCheckboxModule, MatDatepickerModule
+    MatInputModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDialogModule
   ],
   providers: [EventService],
-  exports: [EventDetailsComponent, EventListComponent]
+  exports: [EventDetailsComponent, EventListComponent, MatDialogModule]
 
 })
 export class EventModule { }

@@ -4,6 +4,8 @@ import { EventService } from '../event.service';
 import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 import { Event } from 'src/models/Event';
 import { UserService } from 'src/app/user/user.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EventDetailsComponent } from '../event-details/event-details.component';
 
 
 @Component({
@@ -15,6 +17,7 @@ export class EventListComponent implements OnInit {
 
 
   constructor(private _eventService: EventService, private _activatedRoute: ActivatedRoute, private _userService: UserService,
+    public dialog: MatDialog,
     private _route: Router) {
     this._user = this._userService._user;
     console.log(this._user.userName);
@@ -47,8 +50,19 @@ export class EventListComponent implements OnInit {
 
 
   newEvent() {
-    this._route.navigate(['/event-details']);
+
+    const dialogRef = this.dialog.open(EventDetailsComponent, {
+      width: '60%',
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
   }
+  //this._route.navigate(['/event-details']);
+
 
   viewGuest(e: Event) {
     sessionStorage.setItem("event", (e.id).toString());

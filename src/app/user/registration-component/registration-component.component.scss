@@ -3,13 +3,23 @@
   }
 
   .my-card{
-    max-width: 500px;
     margin: auto;
-    min-width: 150px;
-    
-    width: 100%;
-    
-  }
+    width:25% ;
+    height: 70%;
+    padding-top: 5%;
+    opacity: 0.75;
+      // max-width: 500px;
+      // margin: auto;
+      // min-width: 150px;
+      
+      // width: 100%;
+      
+    }
+    .my-form{
+      text-align: center;
+      margin: auto;
+      padding-top: 5%;
+    }
    
   .full-width {
     width: 100%;

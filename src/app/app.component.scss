@@ -26,6 +26,7 @@
   background-color: #FFF2E0; }
 .body{
   color: chartreuse;
+  overflow: hidden;
  // mask-image: url('src\assets\img\homeImage.jpg');
 //   font-family: "Poppins", sans-serif;
 //   height: 100vh;
@@ -47,5 +48,14 @@
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
+background-attachment: fixed;
+
  }
+ .page-footer
+ {
+   background-color: black;
+   text-align: center;
+   color: white;
+ }
+ 
  

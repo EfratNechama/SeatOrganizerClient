@@ -1,12 +1,34 @@
 
-<body class="backImage" [ngStyle]="{backgroundImage:'url(../assets/static/homeImage.jpg)'}">
-<mat-toolbar conglor="primary" class="toolBar" >
-  <mat-toolbar-row>
+<!-- <body class="backImage" [ngStyle]="{backgroundImage:'url(../assets/static/homeImage.jpg)'}"> -->
 
-    <span><a href="/">HOME</a></span>
+<!-- <body class="backImage" [ngStyle]="{backgroundImage:'url(../assets/static/thumb_mobile.jpg)'}"> -->
+
+<!-- <body class="backImage" [ngStyle]="{backgroundImage:'url(../assets/static/istockphoto-495512277-612x612.jpg)'}"> -->
+
+<body class="backImage" [ngStyle]="{backgroundImage:'url(../assets/static/shabby-chic-vintage-wedding-decor-ideas-gold-lantern-white-orchid-whitehouse_crockery-1.jpg)'}">
+
+<!-- <body class="backImage"  [ngStyle]="{backgroundImage:'url(../assets/static/istockphoto-1154015219-170667a.jpg)'}"> -->
+
+
+<mat-toolbar conglor="primary" class="toolBar" >
+  <mat-toolbar-row >
+
+    <span ><a href="/"  style="color:white">
+      <mat-icon matSuffix>menu</mat-icon>HOME
+      
+    </a></span>
     <span class="spacer"></span>
-    <a mat-button routerLink="/register">Register</a>
-    <a mat-button routerLink="/login">Login</a>
+    <a mat-button routerLink="/register" style="color:white">Register                  
+      <mat-icon matSuffix>person_add_alt_1</mat-icon>
+    </a>
+
+    <a mat-button routerLink="/login" style="color:white">Login
+      <mat-icon matSuffix>login</mat-icon>
+    </a>
+
+    <a mat-button  style="color:white">Logout
+      <mat-icon matSuffix>logout</mat-icon>
+    </a>
 
 
   </mat-toolbar-row>

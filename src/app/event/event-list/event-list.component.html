@@ -5,48 +5,73 @@
    </button>
    <b>Add new event</b>
    <br> -->
-   <button (click)="newEvent()" mat-raised-button color="primary">
+   <button (click)="newEvent()" mat-raised-button color="primary" >
       <!-- <button mat-raised-button (click)="openDialog()">Pick one</button> -->
       <mat-icon>add</mat-icon>Add new event
    </button>
 </div>
 
-<mat-accordion *ngFor="let e of _eventList">
-   <mat-expansion-panel hideToggle>
+<mat-accordion *ngFor="let e of _eventList" class="tbl" style="width:70%">
+   <mat-expansion-panel hideToggle class="tbl">
       <mat-expansion-panel-header>
          <mat-panel-title>
             This is the name of the event
          </mat-panel-title>
-         <mat-panel-description>
+         <mat-panel-description> 
             {{e.eventDate}}
+         </mat-panel-description>
+         <mat-panel-description> 
             {{e.id}}
-            <button (click)="deleteEvent(e)" mat-raised-button color="primary"> delete event </button>
+         </mat-panel-description>
+         <mat-panel-description> 
+            <button (click)="deleteEvent(e)" mat-raised-button color="primary"> <mat-icon>delete</mat-icon>  </button>
+         </mat-panel-description>
+         <mat-panel-description> 
             <button (click)="viewGuest(e)" mat-raised-button color="primary"> view my geusts </button>
          </mat-panel-description>
+         
+         
       </mat-expansion-panel-header>
+     
+      <table *ngIf="e.seperatedSeats"> 
+         <td >
+               <p>Separated seats</p>
+         </td>
+         <td>
+               <p>{{e. numTablesMale}} tables in men section</p><br>
+               <p>{{e. numChairsMale}} chairs per table</p>
+         </td>
+        
+         <td>
+               <p>{{e. numTablesFemale}} tables in women section</p><br>
+               <p>{{e. numChairsFemale}} chairs per table</p>
+         </td>
+         <td>
+            <p>Size of special table in men section</p><br>
+            <p *ngIf="e.numSpecialTableChairsMale!=0">  {{e.numSpecialTableChairsMale}} chairs  </p> 
+            <p *ngIf="e.numSpecialTableChairsMale==0">No special table in men section</p>
+         </td>
+         <td>
+            <p>Size of special table in women section</p><br>
+            <p *ngIf="e.numSpecialTableChairsFemale!=0">  {{e.numSpecialTableChairsFemale}} chairs  </p> 
+            <p *ngIf="e.numSpecialTableChairsFemale==0">No special table in women section</p>
+         </td>
+      </table>
+      <table *ngIf="!e.seperatedSeats"> 
 
+         <td>
+               <p>{{e. numTablesMale}} tables in this event</p><br>
+               <p>{{e. numChairsMale}} chairs per table</p>
 
+         </td>
+         <td>
+            <p>Size of special table:</p><br>
+            <p *ngIf="e.numSpecialTableChairsMale!=0">  {{e.numSpecialTableChairsMale}} chairs  </p> 
+            <p *ngIf="e.numSpecialTableChairsMale==0">No special table</p>
+         </td>
+        
+      </table>
    </mat-expansion-panel>
 
 </mat-accordion>
 
-
-<!-- <table>
-   <tr *ngFor="let e of _eventList">
-      <td>
-         id: {{e.id}}
-      </td>
-      <td>
-         date:
-      </td>
-      <td>
-         <button>update details</button>
-      </td>
-      <td>
-         <button (click)="viewGuest(e)"> view my geusts </button>
-      </td>
-      <td>
-         <button (click)="deleteEvent(e)"> delete event </button>
-      </td>
-   </tr>
-</table> -->

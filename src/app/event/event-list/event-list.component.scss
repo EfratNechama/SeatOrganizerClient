@@ -1,5 +1,40 @@
 .mat-form-field + .mat-form-field {
     margin-left: 8px;
+    
+  }
+  table {
+    width: 100%;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: gray;
+   
+  }
+  .c{
+    border-style: inset;
+  }
+//   .a{
+// background-color: grey;
+//   }
+//   .b{
+// background-color:lightslategray;
+//   }
+  tr, td {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .btn-add-event{
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+  }
+  .tbl{
+    margin: auto;
+  
+    width: 80%;
+    opacity: 0.75;
+    
   }
 //   .btn-add-event
 //   {

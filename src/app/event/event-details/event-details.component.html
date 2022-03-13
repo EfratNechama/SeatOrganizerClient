@@ -1,7 +1,23 @@
-<div class="ourDialog" [ngStyle]="{backgroundImage:'url(../assets/static/d.PNG)'}">
+<div class="ourDialog" >
 
    <form [formGroup]="eventDetailsForm" class="my-form">
       <h1 mat-dialog-title>New event</h1>
+      <mat-form-field appearance="fill">
+         <p> your event name</p>
+         <input type="text"  matInput>
+      </mat-form-field>
+
+<mat-form-field for appearance="fill">
+   <mat-label>Choose a date</mat-label>
+   <input formControlName="eventDate" matInput [matDatepicker]="picker">
+   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+   <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<br>
+
+<mat-label><mat-icon>image</mat-icon>upload your invitation</mat-label>
+<input type="file" formControlName="invitationImage">
+<br>
       <div mat-dialog-content>
          <p>Is your event seperated?</p>
          <mat-radio-group aria-label="Select an option">
@@ -75,16 +91,7 @@
             </div>
          </mat-card>
 
-         <mat-label>upload your invitation</mat-label>
-         <input type="file" formControlName="invitationImage">
-         <br>
 
-         <mat-form-field for appearance="fill">
-            <mat-label>Choose a date</mat-label>
-            <input formControlName="eventDate" matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-         </mat-form-field>
 
          <button (click)="selectCategory()" mat-raised-button color="primary">
             <mat-icon>add</mat-icon>Choose categories
@@ -118,127 +125,3 @@
       </div>
    </form>
 </div>
-<!-- <mat-form-field appearance="fill">
-      <mat-label>Favorite Animal</mat-label>
-      <input matInput [(ngModel)]="data.animal">
-   </mat-form-field>
-</div>
-<div mat-dialog-actions>
-   <button mat-button (click)="onNoClick()">No Thanks</button>
-   <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
-</div> -->
-<!-- <p>event-details works!</p>
-<form [formGroup]="eventDetailsForm" class="my-form">
-
-
-
-
-   <label>seperated?</label>
-   <br>
-   <input type="radio" name="seats" (click)="seperated()"> yes
-   <input type="radio" name="seats" (click)="noSeperated()"> no
-
-
-   <div *ngIf="_seperated">
-      <label>number of chairs special table female</label>
-      <input formControlName="numSpecialTableChairsFemale">
-      <br>
-      <label>number of chairs female</label>
-      <input formControlName="numChairsFemale">
-      <br>
-      <label>number of tabels female</label>
-      <input formControlName="numTablesFemale">
-      <br>
-
-      <label>number of chairs male</label>
-      <input formControlName="numChairsMale">
-      <br>
-      <label>number of tabels male</label>
-      <input formControlName="numTablesMale">
-      <br>
-
-      <input type="checkbox" (click)="wantSpeciale()">you can create one special table, do you want?
-      <div *ngIf="_speciale">
-         <label>number of chairs male in special table female</label>
-         <input formControlName="numSpecialTableChairsFemale">
-         <br>
-         <label>number of chairs special table male</label>
-         <input formControlName="numSpecialTableChairsMale">
-         <br>
-         <label>number of chairs in special table male</label>
-         <input formControlName="numSpecialTableChairsMale">
-      </div>
-
-   </div>
-
-
-   <div *ngIf="_noSeperate">
-      <label>number of chairs special table </label>
-      <input formControlName="numSpecialTableChairsFemale">
-      <br>
-      <label>number of chairs </label>
-      <input formControlName="numChairsFemale">
-      <br>
-      <label>number of tabels </label>
-      <input formControlName="numTablesFemale">
-      <br>
-      <input type="checkbox" (click)="wantSpeciale()">you can create one special table, do you want?
-   <div *ngIf="_speciale"> 
-      <label>number of chairs in special table male</label>
-      <input formControlName="numSpecialTableChairsMale">
-   </div>
-   </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <label>upload your invitation<label>
-      <input type="image" formControlName="invitationImage">
-      <br>
-
-
-
-
-
-      <label>event date<label>
-            <input type="date" formControlName="eventDate">
-            <br>
-
-            <button (click)="selectCaregory()">select caregory</button>
-
-            <div *ngFor="let c of _generalCategory">
-               <input type="checkbox" name={{c.name}} value={{c.name}}>{{c.name}}
-            </div>
-
-
-             <section class="example-section" [formGroup]="categoryGroup">
-   <h4>Select your categories:</h4>
-   <div *ngFor="let c of _generalCategory">
-      <p><mat-checkbox formControlName="name">{{c.name}}</mat-checkbox></p>
-   </div>
- 
- </section> -->
-<!-- 
-            <br>
-            <button>add new category</button>
-            <input placeholder="name" #addedCat>
-            <br>
-
-            <button (click)="addPersonalCategory(addedCat.value)">add to category list</button>
-
-
-            <br>
-            <br>
-            <br>
-            <button (click)="saveNewEvent()">save</button> -->

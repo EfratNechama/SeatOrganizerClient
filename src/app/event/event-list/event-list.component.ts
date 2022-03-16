@@ -32,19 +32,21 @@ export class EventListComponent implements OnInit {
   getEvents: EventEmitter<any> = new EventEmitter();
 
   ngOnInit(): void {
-
-
-    this.getEvents.emit(this._user.id);
+  this.getEvents.emit(this._user.id);
     this._eventService.getEventListByUserId(this._user.id).subscribe(
       succ => {
         alert("get event succuss :) ");
         this._eventList = succ;
+        debugger;
+
         console.log(succ);
 
 
       },
       err => { alert("get event failed :) "); }
     )
+    debugger;
+
   }
 
 
@@ -54,11 +56,6 @@ export class EventListComponent implements OnInit {
     const dialogRef = this.dialog.open(EventDetailsComponent, {
       height: '70%',
       width: '70%',
-
-
-
-
-
     });
 
     dialogRef.afterClosed().subscribe(result => {

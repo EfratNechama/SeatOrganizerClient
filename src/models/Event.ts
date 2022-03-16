@@ -1,6 +1,6 @@
 export class Event {
     public id: number;
-    public seperatedSeats?: boolean;
+    public separatedSeats?: boolean;
     public numTablesMale?: number;
     public numTablesFemale?: number;
     public numChairsMale?: number;
@@ -15,7 +15,7 @@ export class Event {
      *
      */
     constructor(id: number,
-        seperatedSeats: boolean,
+        separatedSeats: boolean,
 
         numTablesMale?: number,
         numTablesFemale?: number,

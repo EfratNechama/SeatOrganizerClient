@@ -1,5 +1,13 @@
-<p>guest-list works!</p>
 
+<!-- <button (click)="newGuest()" >Add another guest</button> -->
+
+
+<div class="btn-add-guest">
+   
+   <button (click)="newGuest()" mat-raised-button color="primary" >
+      <mat-icon>add</mat-icon>Add another guest
+   </button>
+</div>
 
 <table>
     <tr *ngFor="let g of _guestList">
@@ -35,7 +43,6 @@
         </td>
     </tr>
 </table>
-<button (click)="newGuest()" >Add another guest</button>
-<app-guest-details *ngIf="_show" #guestDetails></app-guest-details>
+<!-- <app-guest-details *ngIf="_show" #guestDetails></app-guest-details> -->
 
 

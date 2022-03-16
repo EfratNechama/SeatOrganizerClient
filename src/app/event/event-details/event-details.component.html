@@ -19,13 +19,13 @@
 <input type="file" formControlName="invitationImage">
 <br>
       <div mat-dialog-content>
-         <p>Is your event seperated?</p>
+         <p>Is your event separated?</p>
          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1" name="seats" (click)="seperated()">yes</mat-radio-button>
-            <mat-radio-button value="0" name="seats" (click)="notSeperated()">no</mat-radio-button>
+            <mat-radio-button value="1" name="seats" (click)="separated()">yes</mat-radio-button>
+            <mat-radio-button value="0" name="seats" (click)="notSeparated()">no</mat-radio-button>
          </mat-radio-group>
          <mat-card>
-            <div *ngIf="_seperated" class="ourDiv">
+            <div *ngIf="_separated" class="ourDiv">
                <p>How many tables?</p>
                <mat-form-field appearance="fill">
                   <mat-label> male</mat-label>
@@ -46,7 +46,7 @@
                </mat-form-field>
 
                <br>
-               <mat-checkbox (click)="wantSpeciale()">You can create one special table for
+               <mat-checkbox (click)="wantSpecial()">You can create one special table for
                   each
                   section. Do you want?
                </mat-checkbox>
@@ -67,7 +67,7 @@
 
 
 
-            <div *ngIf="_notSeperate">
+            <div *ngIf="_notSeparate">
                <mat-form-field appearance="fill">
                   <mat-label> How many tables?</mat-label>
                   <input type="number" formControlName="numTablesMale" matInput>
@@ -79,7 +79,7 @@
 
 
                <br>
-               <mat-checkbox (click)="wantSpeciale()">You can create one special table
+               <mat-checkbox (click)="wantSpecial()">You can create one special table
                   . Do you want?
                </mat-checkbox>
                <div *ngIf="_special">

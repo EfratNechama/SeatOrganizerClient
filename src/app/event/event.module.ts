@@ -6,7 +6,7 @@ import { EventService } from './event.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
-import { MatDialogModule } from '@angular/material/dialog';
+// import { MatDialogModule } from '@angular/material/dialog';
 import { MaterialModule } from '../material/material.module';
 @NgModule({
   declarations: [EventDetailsComponent, EventListComponent],
@@ -15,10 +15,12 @@ import { MaterialModule } from '../material/material.module';
     CommonModule, FormsModule, HttpClientModule, BrowserModule,
     ReactiveFormsModule,
 
-    MatDialogModule
+   // MatDialogModule
   ],
   providers: [EventService],
-  exports: [EventDetailsComponent, EventListComponent, MatDialogModule]
+  exports: [EventDetailsComponent, EventListComponent,
+    // MatDialogModule
+  ]
 
 })
 export class EventModule { }

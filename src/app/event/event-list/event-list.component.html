@@ -33,7 +33,7 @@
          
       </mat-expansion-panel-header>
      
-      <table *ngIf="e.seperatedSeats"> 
+      <table *ngIf="e.separatedSeats"> 
          <td >
                <p>Separated seats</p>
          </td>
@@ -57,10 +57,10 @@
             <p *ngIf="e.numSpecialTableChairsFemale==0">No special table in women section</p>
          </td>
       </table>
-      <table *ngIf="!e.seperatedSeats"> 
+      <table *ngIf="!e.separatedSeats"> 
 
          <td>
-               <p>{{e. numTablesMale}} tables in this event</p><br>
+               <p>{{e.numTablesMale}} tables in this event</p><br>
                <p>{{e. numChairsMale}} chairs per table</p>
 
          </td>

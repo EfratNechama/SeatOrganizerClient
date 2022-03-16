@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { UserService } from 'src/app/user/user.service';
 import { Guest } from 'src/models/Guest';
 import { GuestService } from '../guest.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-guest-details',
@@ -11,7 +12,12 @@ import { GuestService } from '../guest.service';
 })
 export class GuestDetailsComponent implements OnInit {
 
-  constructor(private _guestService: GuestService, private _userService: UserService) { }
+  constructor(private _guestService: GuestService, private _userService: UserService,
+    public dialogRef: MatDialogRef<GuestDetailsComponent>,
+    ) { }
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
 
   ngOnInit(): void {
 
@@ -39,17 +45,21 @@ export class GuestDetailsComponent implements OnInit {
 
 
   })
-  _show: boolean = false;
+ // _show: boolean = false;
   // addNewguest() {
   //   this._guest = this.guestDetailsForm.value;
   // }
   saveWithoutSending() {
     this._guest = this.guestDetailsForm.value;
     this._guestService.postGuest(this._guest, false).subscribe(succ => { console.log(this._guest, false) }, err => { console.log("error") })
+    this.dialogRef.close();
+
   }
   saveAndSend() {
     this._guest = this.guestDetailsForm.value;
     this._guestService.postGuest(this._guest, true).subscribe(succ => { console.log(this._guest, false) }, err => { console.log("error") })
+    this.dialogRef.close();
+
   }
 }
 

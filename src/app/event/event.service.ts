@@ -19,7 +19,9 @@ export class EventService {
 
   getEventListByUserId(i?:number): Observable<Event[]> {
      
+    
       return this.http.get<Event[]>("/api/Event/User/"+ i);
+      debugger;
      }
 
      getGeneralCategory():Observable<Category[]> {

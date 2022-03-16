@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -22,11 +23,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   imports: [
     CommonModule,
     MatExpansionModule,MatToolbarModule,MatSliderModule,MatButtonModule,MatDatepickerModule,MatNativeDateModule,
-    MatRadioModule,MatListModule,MatInputModule,MatFormFieldModule,MatCardModule,MatIconModule,MatCheckboxModule
+    MatRadioModule,MatListModule,MatInputModule,MatFormFieldModule,MatCardModule,MatIconModule,MatCheckboxModule,
+    MatDialogModule,
   ],
   exports:[
     MatExpansionModule,MatToolbarModule,MatSliderModule,MatButtonModule,MatDatepickerModule,MatNativeDateModule,
-    MatRadioModule,MatListModule,MatInputModule,MatFormFieldModule,MatCardModule,MatIconModule,MatCheckboxModule
+    MatRadioModule,MatListModule,MatInputModule,MatFormFieldModule,MatCardModule,MatIconModule,MatCheckboxModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

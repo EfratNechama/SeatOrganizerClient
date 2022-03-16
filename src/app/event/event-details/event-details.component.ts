@@ -36,7 +36,7 @@ export class EventDetailsComponent implements OnInit {
   onCreateEvent: EventEmitter<Event> = new EventEmitter();
 
 
-  //_seperatedFlag: boolean = false;
+  //_separatedFlag: boolean = false;
   _generalCategory: Category[] = [];
   _personalCategory: string[] = []
   _sendCategory: Category[] = [];
@@ -52,13 +52,13 @@ export class EventDetailsComponent implements OnInit {
     console.log(this._user);
 
   }
-  _seperated: boolean = false;
-  _notSeperate: boolean = false;
+  _separated: boolean = false;
+  _notSeparate: boolean = false;
   _special: boolean = false;
   _personalCat: boolean = false;
   eventDetailsForm: FormGroup = new FormGroup({
     "id": new FormControl(0),
-    "seperatedSeats": new FormControl(false),
+    "separatedSeats": new FormControl(false),
     "numTablesMale": new FormControl(0),
     "numTablesFemale": new FormControl(0),
     "numChairsMale": new FormControl(0),
@@ -135,24 +135,24 @@ export class EventDetailsComponent implements OnInit {
 
   }
 
-  notSeperated() {
-    this._notSeperate = !this._notSeperate;
+  notSeparated() {
+    this._notSeparate = !this._notSeparate;
     this._special = false;
-    if (this._seperated) {
-      this._seperated = !this._seperated;
+    if (this._separated) {
+      this._separated = !this._separated;
     }
 
   }
-  seperated() {
-    this._seperated = !this._seperated;
+  separated() {
+    this._separated = !this._separated;
     this._special = false;
-    if (this._notSeperate) {
-      this._notSeperate = !this._notSeperate;
+    if (this._notSeparate) {
+      this._notSeparate = !this._notSeparate;
 
     }
   }
 
-  wantSpeciale() {
+  wantSpecial() {
     this._special = !this._special;
   }
 

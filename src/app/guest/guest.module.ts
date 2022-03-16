@@ -8,9 +8,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import{GuestService} from './guest.service';
 import { GuestListComponent } from './guest-list/guest-list.component'
 
+import { MaterialModule } from '../material/material.module';
+
 @NgModule({
   declarations: [GuestDetailsComponent,GuestListComponent],
-  imports: [ CommonModule,FormsModule, HttpClientModule, BrowserModule,ReactiveFormsModule],
+  imports: [ CommonModule,FormsModule, HttpClientModule, BrowserModule,ReactiveFormsModule,
+    MaterialModule],
   providers: [GuestService],
   exports: [GuestDetailsComponent,GuestListComponent]
 })

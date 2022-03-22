@@ -51,13 +51,13 @@ export class GuestDetailsComponent implements OnInit {
   // }
   saveWithoutSending() {
     this._guest = this.guestDetailsForm.value;
-    this._guestService.postGuest(this._guest, false).subscribe(succ => { console.log(this._guest, false) }, err => { console.log("error") })
+    this._guestService.postGuest(this._guest, false).subscribe(succ => { console.log(this._guest) }, err => { console.log("error") })
     this.dialogRef.close();
 
   }
   saveAndSend() {
     this._guest = this.guestDetailsForm.value;
-    this._guestService.postGuest(this._guest, true).subscribe(succ => { console.log(this._guest, false) }, err => { console.log("error") })
+    this._guestService.postGuest(this._guest, true).subscribe(succ => { console.log(this._guest, 'send') }, err => { console.log("error") })
     this.dialogRef.close();
 
   }

@@ -1,28 +1,44 @@
 
 <form [formGroup]="guestDetailsForm" class="my-form">
-    <div>
-        <label>first name</label>
-        <input formControlName="firstName">
-    </div>
-    <div>
-        <label>last name</label>
-        <input formControlName="lastName">
-    </div>
-    <div>
-        <label>phone</label>
-        <input formControlName="phone">
-    </div>
-    <div>
-        <label>email</label>
-        <input formControlName="email">
-    </div>
+    <h1 mat-dialog-title>Add guest</h1>
+    <mat-form-field appearance="fill">
+        <mat-label>first name</mat-label>
+        <input formControlName="firstName" matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>last name</mat-label>
+        <input formControlName="lastName" matInput>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>phone</mat-label>
+        <input formControlName="phone" matInput>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill">
+        <mat-label>email</mat-label>
+        <input formControlName="email" matInput>
+    </mat-form-field>
+    <br>
+
     <div>
         <select>
             seleect category:
             <input formControlName="categotyId">
         </select>
     </div>
+    <br>
+    <br>
     <div>
-        <button (click)="saveAndSend()">save and send email</button>
-        <button (click)="saveWithoutSending()">save </button>
+        <!-- <button (click)="saveAndSend()" mat-raised-button color="primary">save and send email</button> -->
+        <!-- <button (click)="saveWithoutSending()" mat-raised-button color="primary">save </button> -->
+        <button (click)="saveAndSend()" mat-raised-button color="primary"><mat-icon>mark_email_read</mat-icon></button>
+        <button (click)="saveWithoutSending()" mat-raised-button color="primary"><mat-icon>done_outline</mat-icon> </button>
+
     </div>
+
+
+ 

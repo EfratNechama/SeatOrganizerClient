@@ -30,8 +30,8 @@ export class GuestListComponent implements OnInit {
   newGuest() {
     // this._show = !this._show
     const dialogRef = this.dialog.open(GuestDetailsComponent, {
-      height: '70%',
-      width: '70%',
+      height: '50%',
+      width: '20%',
     });
 
     dialogRef.afterClosed().subscribe(result => {

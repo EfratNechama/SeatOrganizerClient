@@ -26,7 +26,8 @@
   background-color: #FFF2E0; }
 body{
   color: chartreuse;
-  overflow: hidden;
+  overflow: scroll;
+  //overflow: hidden;
  // mask-image: url('src\assets\img\homeImage.jpg');
 //   font-family: "Poppins", sans-serif;
 //   height: 100vh;
@@ -38,7 +39,8 @@ body{
 //   width: 100%;
 
 position: relative;        /* for the footer to move with the page size */
-min-height: 100%;          /* for the footer to be at the bottom */
+min-height: 100%;  
+max-height: max-content;        
 padding-bottom: 6rem;   
 }
  .pic{
@@ -50,7 +52,7 @@ padding-bottom: 6rem;
 // height: 100%;
 
 background-position: center;
-background-repeat: no-repeat;
+//background-repeat: repeat;
 background-size: cover;
 background-attachment: fixed;
 
@@ -60,11 +62,7 @@ background-attachment: fixed;
    background-color: black;
    text-align: center;
    color: white;
-   position: relative;
-
-
-  //  position: absolute;        /* for it to disappear under last body element */
-   bottom: 0; 
+   
  }
  
  

@@ -1,12 +1,7 @@
 <div class="btn-add-event">
-   <!-- <button (click)="newEvent()" mat-fab color="primary">
 
-      <mat-icon>add</mat-icon>
-   </button>
-   <b>Add new event</b>
-   <br> -->
    <button (click)="newEvent()" mat-raised-button color="primary" >
-      <!-- <button mat-raised-button (click)="openDialog()">Pick one</button> -->
+
       <mat-icon>add</mat-icon>Add event
    </button>
 </div>
@@ -23,10 +18,10 @@
          <mat-panel-description> 
             {{e.id}}
          </mat-panel-description>
-         <mat-panel-description> 
+         <mat-panel-description class="hide"> 
             <button (click)="deleteEvent(e)" mat-raised-button color="primary"> <mat-icon>delete</mat-icon>  </button>
          </mat-panel-description>
-         <mat-panel-description> 
+         <mat-panel-description class="hide"> 
             <button (click)="viewGuest(e)" mat-raised-button color="primary"> view my geusts </button>
          </mat-panel-description>
          

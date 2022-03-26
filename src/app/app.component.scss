@@ -24,7 +24,7 @@
   padding: 50px;
   margin: 20px;
   background-color: #FFF2E0; }
-.body{
+body{
   color: chartreuse;
   overflow: hidden;
  // mask-image: url('src\assets\img\homeImage.jpg');
@@ -36,6 +36,10 @@
 //   background-size: cover;
 //   position: fixed;
 //   width: 100%;
+
+position: relative;        /* for the footer to move with the page size */
+min-height: 100%;          /* for the footer to be at the bottom */
+padding-bottom: 6rem;   
 }
  .pic{
    size: 100%;
@@ -56,6 +60,11 @@ background-attachment: fixed;
    background-color: black;
    text-align: center;
    color: white;
+   position: relative;
+
+
+  //  position: absolute;        /* for it to disappear under last body element */
+   bottom: 0; 
  }
  
  

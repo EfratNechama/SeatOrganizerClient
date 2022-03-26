@@ -1,0 +1,29 @@
+.tbl{
+    margin: auto;
+  
+    width: 80%;
+    opacity: 0.75;
+}
+.btn-add-guest{
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+  }
+
+  table {
+    width: 100%;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: gray;
+   
+  }
+
+
+  .tbl mat-icon{
+    visibility:hidden;
+  }
+  
+  .tbl:hover mat-icon{
+    visibility:visible;
+  }

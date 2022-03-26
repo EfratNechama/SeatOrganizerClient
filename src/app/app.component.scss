@@ -43,6 +43,10 @@ min-height: 100%;
 max-height: max-content;        
 padding-bottom: 6rem;   
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
  .pic{
    size: 100%;
  }

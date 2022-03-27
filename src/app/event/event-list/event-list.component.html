@@ -24,8 +24,10 @@
             {{e.id}}
          </mat-panel-description>
          <mat-panel-description> 
-            <button (click)="deleteEvent(e)" mat-raised-button color="primary"> <mat-icon>delete</mat-icon>  </button>
+            <!-- <button (click)="deleteEvent(e)" mat-raised-button color="primary"> <mat-icon  (click)="deleteEvent(e)">delete</mat-icon>  </button> -->
+            <mat-icon  (click)="deleteEvent(e)">delete</mat-icon> 
          </mat-panel-description>
+
          <mat-panel-description> 
             <button (click)="viewGuest(e)" mat-raised-button color="primary"> view my geusts </button>
          </mat-panel-description>

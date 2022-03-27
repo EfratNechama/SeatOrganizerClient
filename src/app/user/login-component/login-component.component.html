@@ -5,7 +5,8 @@
    <mat-card-content >
        <form [formGroup]="loginForm" class="my-form">
          
-           
+        <h1 mat-dialog-title style="font-weight: bold;">Welcome</h1>
+        <br>
               <div>
               <mat-form-field  appearance="fill">
                  <mat-label>Email</mat-label>
@@ -28,7 +29,7 @@
 
 
    <mat-card-actions class="my-form">
-     <!-- REGISTER BUTTON -->
+     <!-- LOGIN BUTTON -->
      <button mat-raised-button [disabled]="loginForm.invalid" (click)="login()" color="primary">LOGIN</button>
 
    </mat-card-actions>

@@ -66,7 +66,7 @@ export class EventDetailsComponent implements OnInit {
     "numSpecialTableChairsMale": new FormControl(0),
     "numSpecialTableChairsFemale": new FormControl(0),
     "invitationImage": new FormControl(null),
-    "eventDate": new FormControl(Date.now)
+    "eventDate": new FormControl(new Date())
     //"generalCatgory":new FormControl(Date.now)
 
   })

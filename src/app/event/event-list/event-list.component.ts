@@ -35,17 +35,17 @@ export class EventListComponent implements OnInit {
   this.getEvents.emit(this._user.id);
     this._eventService.getEventListByUserId(this._user.id).subscribe(
       succ => {
-        alert("get event succuss :) ");
+        console.log("get event succuss :) ");
         this._eventList = succ;
-        debugger;
+       
 
         console.log(succ);
 
 
       },
-      err => { alert("get event failed :) "); }
+      err => { console.log("get event failed :) "); }
     )
-    debugger;
+  
 
   }
 
@@ -72,7 +72,7 @@ export class EventListComponent implements OnInit {
   }
 
   deleteEvent(e: Event) {
-    this._eventService.deleteEvent(e.id).subscribe(succ => { alert("delete succ") }, err => { alert("delete failed") });
+    this._eventService.deleteEvent(e.id).subscribe(succ => { console.log("delete succ") }, err => { console.log("delete failed") });
     this.ngOnInit();
 
   }

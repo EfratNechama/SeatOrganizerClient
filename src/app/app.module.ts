@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +36,7 @@ import { GuestDetailsComponent } from './guest/guest-details/guest-details.compo
       { path: 'event-details', component: EventDetailsComponent },
       { path: 'guest-list', component: GuestListComponent },
       { path: 'guest-details', component: GuestDetailsComponent },
+      {path:'home' ,component: AppComponent},
     ],
       { useHash: true }),
     EventModule,

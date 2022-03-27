@@ -24,9 +24,10 @@
   padding: 50px;
   margin: 20px;
   background-color: #FFF2E0; }
-.body{
+body{
   color: chartreuse;
-  overflow: hidden;
+  overflow: scroll;
+  //overflow: hidden;
  // mask-image: url('src\assets\img\homeImage.jpg');
 //   font-family: "Poppins", sans-serif;
 //   height: 100vh;
@@ -36,6 +37,15 @@
 //   background-size: cover;
 //   position: fixed;
 //   width: 100%;
+
+position: relative;        /* for the footer to move with the page size */
+min-height: 100%;  
+max-height: max-content;        
+padding-bottom: 6rem;   
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
  .pic{
    size: 100%;
@@ -46,7 +56,7 @@
 // height: 100%;
 
 background-position: center;
-background-repeat: no-repeat;
+//background-repeat: repeat;
 background-size: cover;
 background-attachment: fixed;
 
@@ -56,6 +66,7 @@ background-attachment: fixed;
    background-color: black;
    text-align: center;
    color: white;
+   
  }
  
  

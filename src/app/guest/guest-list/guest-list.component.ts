@@ -46,4 +46,8 @@ export class GuestListComponent implements OnInit {
     this.ngOnInit();
     
   }
+  sendEmail(g:Guest)
+  {
+
+  }
 }

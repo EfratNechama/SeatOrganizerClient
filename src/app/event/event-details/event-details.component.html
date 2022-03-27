@@ -3,10 +3,10 @@
    <form [formGroup]="eventDetailsForm" class="my-form" *ngIf="eventDetailsForm">
       <h1 mat-dialog-title>New event</h1>
       <mat-form-field appearance="fill">
-         <p> your event name</p>
-         <input type="text" matInput>
+         <mat-label>Your event name</mat-label>
+         <input matInput>
       </mat-form-field>
-
+<br>
       <mat-form-field for appearance="fill">
          <mat-label>Choose a date</mat-label>
          <input formControlName="eventDate" matInput [matDatepicker]="picker">
@@ -16,9 +16,10 @@
       <br>
 
       <mat-label>
-         <mat-icon>image</mat-icon>upload your invitation
+         <!-- <mat-icon>image</mat-icon> -->
       </mat-label>
-      <input type="file" formControlName="invitationImage">
+      <input style="text-align: center;" type="file" formControlName="invitationImage">
+      <br>
       <br>
       <div mat-dialog-content>
          <p>Is your event separated?</p>
@@ -28,39 +29,38 @@
             <mat-radio-button [value]="false" name="seats" (click)="notSeparated()">no
             </mat-radio-button>
          </mat-radio-group>
+         <br><br>
          <!-- <mat-card> -->
          <div *ngIf="_separated" class="ourDiv">
             <p>How many tables?</p>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="inputNumber">
                <mat-label> male</mat-label>
                <input type="number" formControlName="numTablesMale" matInput>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="inputNumber">
                <mat-label> female</mat-label>
                <input type="number" formControlName="numTablesFemale" matInput>
             </mat-form-field>
             <p>How many chairs per table?</p>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="inputNumber">
                <mat-label> male</mat-label>
                <input type="number" formControlName="numChairsMale" matInput>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="inputNumber">
                <mat-label> female</mat-label>
                <input type="number" formControlName="numChairsFemale" matInput>
             </mat-form-field>
 
             <br>
-            <mat-checkbox (click)="wantSpecial()">You can create one special table for
-               each
-               section. Do you want?
+            <mat-checkbox (click)="wantSpecial()">You can create one special table for each section. Do you want?
             </mat-checkbox>
             <div *ngIf="_special" class="ourDiv">
                <p>How many chairs per special table?</p>
-               <mat-form-field appearance="fill">
+               <mat-form-field appearance="fill"class="inputNumber">
                   <mat-label> male</mat-label>
                   <input type="number" formControlName="numSpecialTableChairsMale" matInput>
                </mat-form-field>
-               <mat-form-field appearance="fill">
+               <mat-form-field appearance="fill" class="inputNumber">
                   <mat-label> female</mat-label>
                   <input type="number" formControlName="numSpecialTableChairsFemale" matInput>
                </mat-form-field>
@@ -72,22 +72,21 @@
 
 
          <div *ngIf="_notSeparate">
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="inputNumber">
                <mat-label> How many tables?</mat-label>
                <input type="number" formControlName="numTablesMale" matInput>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="inputNumber">
                <mat-label> How many chairs per table?</mat-label>
                <input type="number" formControlName="numChairsMale" matInput>
             </mat-form-field>
 
 
             <br>
-            <mat-checkbox (click)="wantSpecial()">You can create one special table
-               . Do you want?
+            <mat-checkbox (click)="wantSpecial()">You can create one special table. Do you want?
             </mat-checkbox>
             <div *ngIf="_special">
-               <mat-form-field appearance="fill">
+               <mat-form-field appearance="fill"class="inputNumber">
                   <mat-label> How many chairs in special table?</mat-label>
                   <input type="number" formControlName="numSpecialTableChairsMale" matInput>
                </mat-form-field>
@@ -96,7 +95,7 @@
          <!-- </mat-card> -->
 
 
-
+         <br>
          <button (click)="selectCategory()" mat-raised-button color="primary">
             <mat-icon>add</mat-icon>Choose categories
          </button>
@@ -109,22 +108,22 @@
                </p>
             </div>
             <div *ngIf="_personalCat">
-               <mat-form-field appearance="fill">
+               <mat-form-field appearance="fill" >
 
                   <mat-label> Add personal category</mat-label>
                   <input #addedCat matInput>
 
                </mat-form-field>
-               <button (click)="addPersonalCategory(addedCat.value)" mat-raised-button color="primary">
-                  <!-- <button mat-raised-button (click)="openDialog()">Pick one</button> -->
-                  <mat-icon>add</mat-icon>Add
-               </button>
+           
+                  <mat-icon matTooltip="Add" style="cursor: pointer;" (click)="addPersonalCategory(addedCat.value)" >add</mat-icon>
+               
 
             </div>
 
 
 
          </section>
+         <br>
          <button (click)="saveNewEvent()" [disabled]="eventDetailsForm.invalid" mat-raised-button
             color="primary">save</button>
       </div>

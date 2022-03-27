@@ -16,7 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -25,12 +25,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     CommonModule,
     MatExpansionModule,MatToolbarModule,MatSliderModule,MatButtonModule,MatDatepickerModule,MatNativeDateModule,
     MatRadioModule,MatListModule,MatInputModule,MatFormFieldModule,MatCardModule,MatIconModule,MatCheckboxModule,
-    MatDialogModule,MatTooltipModule
+    MatDialogModule,MatTooltipModule,MatSelectModule
   ],
   exports:[
     MatExpansionModule,MatToolbarModule,MatSliderModule,MatButtonModule,MatDatepickerModule,MatNativeDateModule,
     MatRadioModule,MatListModule,MatInputModule,MatFormFieldModule,MatCardModule,MatIconModule,MatCheckboxModule,
-    MatDialogModule,MatTooltipModule
+    MatDialogModule,MatTooltipModule,MatSelectModule
   ]
 })
 export class MaterialModule { }

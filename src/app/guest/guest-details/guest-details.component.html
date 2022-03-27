@@ -1,7 +1,8 @@
 
 <form [formGroup]="guestDetailsForm" class="my-form">
   <!-- <h1 mat-dialog-title>Add guest</h1> -->
-  <mat-icon >account_circle</mat-icon>
+  <mat-icon style="font-size: 50px">account_circle</mat-icon>
+  <br>
     <mat-form-field appearance="fill">
         <mat-label>first name</mat-label>
         <input formControlName="firstName" matInput>
@@ -24,21 +25,31 @@
         <input formControlName="email" matInput>
     </mat-form-field>
     <br>
-
-    <div>
-        <select>
+<div>
+   
+<mat-form-field appearance="fill">
+  <mat-label>Category</mat-label>
+  <mat-select  name="category" formControlName="categotyId">
+    <mat-option *ngFor="let c of _categoryByEventId" [value]=c.id  >
+      {{c.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+    <!-- <div *ngFor="let c of _categoryByEventId">
+        <select >
             seleect category:
             <input formControlName="categotyId">
         </select>
-    </div>
+    </div> -->
     <br>
     <br>
     <div>
         <!-- <button (click)="saveAndSend()" mat-raised-button color="primary">save and send email</button> -->
         <!-- <button (click)="saveWithoutSending()" mat-raised-button color="primary">save </button> -->
       
-        <button matTooltip="Save and send email" [disabled]="guestDetailsForm.invalid" (click)="saveAndSend()" mat-raised-button color="primary"><mat-icon>mark_email_read</mat-icon></button>
-        <button matTooltip="Save without sending email" [disabled]="guestDetailsForm.invalid" (click)="saveWithoutSending()" mat-raised-button color="primary"><mat-icon>done_outline</mat-icon> </button>
+        <button matTooltip="Save and send email" [disabled]="guestDetailsForm.invalid" (click)="saveAndSend()" mat-raised-button color="primary" class="save"><mat-icon>mark_email_read</mat-icon></button>
+        <button matTooltip="Save without sending email" [disabled]="guestDetailsForm.invalid" (click)="saveWithoutSending()" mat-raised-button color="primary" class="save"><mat-icon>done_outline</mat-icon> </button>
 
     </div>
 

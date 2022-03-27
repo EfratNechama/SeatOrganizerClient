@@ -18,32 +18,36 @@ export class GuestListComponent implements OnInit {
     private _guestService: GuestService) { }
 
   ngOnInit(): void {
-    this._guestService.getGuestListByEventId((Number)(sessionStorage.getItem("event"))).subscribe(succ => { this._guestList = succ }, err => { alert("failed") });
-
-
+this.loadGuestList();
 
   }
   _guestList: Guest[] = [];
   _show: boolean = false;
+loadGuestList()
+{
 
+  this._guestService.getGuestListByEventId((Number)(sessionStorage.getItem("event"))).subscribe(succ => { this._guestList = succ }, err => { alert("failed") });
+
+}
 
   newGuest() {
     // this._show = !this._show
     const dialogRef = this.dialog.open(GuestDetailsComponent, {
-      height: '50%',
+      height: '60%',
       width: '20%',
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.loadGuestList();
 
     });
   }
 
   deleteGuest(g:Guest)
   {
-    this._guestService.deleteGuest(g.id).subscribe(succ=>{alert("delete succ")},err=>{alert("delete failed")});
-    this.ngOnInit();
+    this._guestService.deleteGuest(g.id).subscribe(succ=>{alert("delete succ"); this.loadGuestList();},err=>{alert("delete failed")});
+   
     
   }
   sendEmail(g:Guest)

@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Category } from 'src/models/Category';
 import { Guest } from 'src/models/Guest';
+
 //--proxy-config src/proxy.config.json 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +23,14 @@ getGuestListByEventId(eId:number):Observable<Guest[]>
 }
 
 postGuest(g:Guest , send:boolean):Observable<any>
-{ debugger;
+{ 
+  debugger;
   return this.http.post<any>("api/Guest/" +send , g);
 }
-
+getCategoryByEventId(id:number):Observable<any>
+{ 
+  return this.http.get<Category[]>("api/Category/"  + id);
+}
 deleteGuest(gId:number):Observable<number>
 {
   return this.http.delete<number>("api/Guest/"+gId);

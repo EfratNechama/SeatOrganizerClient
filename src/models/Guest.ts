@@ -6,7 +6,7 @@ export class Guest {
     public phone?:string;
     public email?:string;
     public confirmed?:boolean;
-    public categotyId?:number;
+    public categoryId?:number;
     public userId?: number;
     public identifyName?:string;
     public identifyImage?:ImageBitmap;

@@ -82,20 +82,22 @@ export class EventDetailsComponent implements OnInit {
     this._eventService.postEvent(this._event, this._user.id).subscribe(succ => {
       this._eventId = succ;
       console.log(this._eventId);
-      this._generalCategory.forEach(a => { var x = document.getElementsByName(a.name)[0] as HTMLInputElement; if (x.checked) this._personalCategory.push(a.name) });
+     // this._generalCategory.forEach(a => { var x = document.ntsByName(a.name)[0] as HTMLInputElement; if (x.checked) this._personalCategory.push(a.name) });
 
 
 
       this._personalCategory.forEach(el => {
-        this._sendCategory.push(new Category(0, el, this._eventId));
+      this._sendCategory.push(new Category(0, el, this._eventId));
 
       });
+     
       this._eventService.postCategory(this._sendCategory).subscribe(succ => {
-        alert("post category succesed!");
+       
+        console.log("post category succesed!");
         this._route.navigate(['/event-list'])
       }, err => { alert("post category failed!") })
 
-    }, err => { alert("error") });
+    }, err => { alert("error in post event") });
 
   }
 

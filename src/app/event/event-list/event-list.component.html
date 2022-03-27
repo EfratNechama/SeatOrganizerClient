@@ -18,12 +18,14 @@
          <mat-panel-description> 
             {{e.id}}
          </mat-panel-description>
+
          <mat-panel-description class="hide"> 
-            <button (click)="deleteEvent(e)" mat-raised-button color="primary"> <mat-icon>delete</mat-icon>  </button>
+            <button (click)="viewGuest(e)" mat-raised-button color="black"> view my guests </button>
          </mat-panel-description>
          <mat-panel-description class="hide"> 
-            <button (click)="viewGuest(e)" mat-raised-button color="primary"> view my geusts </button>
+            <mat-icon (click)="deleteEvent(e)" mat-raised-button color="black"> delete</mat-icon> 
          </mat-panel-description>
+
          
          
       </mat-expansion-panel-header>

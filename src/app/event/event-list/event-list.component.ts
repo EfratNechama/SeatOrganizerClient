@@ -6,6 +6,7 @@ import { Event } from 'src/models/Event';
 import { UserService } from 'src/app/user/user.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EventDetailsComponent } from '../event-details/event-details.component';
+// import { loadavg } from 'os';
 
 
 @Component({
@@ -28,38 +29,38 @@ export class EventListComponent implements OnInit {
 
   _eventList!: Event[];
 
+
+
   @Output()
   getEvents: EventEmitter<any> = new EventEmitter();
 
   ngOnInit(): void {
-  this.getEvents.emit(this._user.id);
+  this.loadMyData();
+  }
+
+  loadMyData(){
+    this.getEvents.emit(this._user.id);
     this._eventService.getEventListByUserId(this._user.id).subscribe(
       succ => {
         console.log("get event succuss :) ");
         this._eventList = succ;
-       
-
         console.log(succ);
-
-
       },
       err => { console.log("get event failed :) "); }
     )
-  
-
   }
-
-
-
   newEvent() {
 
     const dialogRef = this.dialog.open(EventDetailsComponent, {
       height: '70%',
-      width: '70%',
+      width: '25%',
     });
 
     dialogRef.afterClosed().subscribe(result => {
+    
       console.log('The dialog was closed');
+     
+      this.loadMyData();
 
     });
   }
@@ -72,8 +73,8 @@ export class EventListComponent implements OnInit {
   }
 
   deleteEvent(e: Event) {
-    this._eventService.deleteEvent(e.id).subscribe(succ => { console.log("delete succ") }, err => { console.log("delete failed") });
-    this.ngOnInit();
+    this._eventService.deleteEvent(e.id).subscribe(succ => { console.log("delete succ") ;this.loadMyData();}, err => { console.log("delete failed") });
+ 
 
   }
 

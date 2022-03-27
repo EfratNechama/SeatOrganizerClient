@@ -17,7 +17,7 @@ import { MaterialModule } from '../material/material.module';
 BrowserModule,
     MaterialModule
   ],
-  providers: [UserService],
+  // providers: [UserService],
   exports: [LoginComponentComponent, RegistrationComponentComponent]
 })
 export class UserModule { }

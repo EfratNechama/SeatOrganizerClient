@@ -58,7 +58,7 @@ err=>{
     "email": new FormControl(null, [Validators.email, Validators.required]),
     "confirmed": new FormControl(false),
     //צריך עיון
-    "categotyId": new FormControl(0),
+    "categoryId": new FormControl(0),
     "userId": new FormControl(this._userService._user.id),
     "identifyName": new FormControl(null),
     "identifyImage": new FormControl(null),
@@ -74,7 +74,7 @@ err=>{
   saveWithoutSending() {
     
     this._guest = this.guestDetailsForm.value;
-   // this._guest.categotyId = this._categoryByEventId.filter(c =>{ debugger;c.name == this.guestDetailsForm.controls["category"].value})[0].id;
+   // this._guest.categoryId = this._categoryByEventId.filter(c =>{ debugger;c.name == this.guestDetailsForm.controls["category"].value})[0].id;
     this._guestService.postGuest(this._guest, false).subscribe(succ => { console.log(this._guest) ;this.dialogRef.close();}, err => { console.log("error") })
     
 

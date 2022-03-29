@@ -23,7 +23,7 @@ export class Guest {
           phone  :string,
           email  :string,
           confirmed  :boolean,
-          categotyId  :number,
+          categoryId  :number,
           userId  : number,
           identifyName  :string,
           identifyImage  :ImageBitmap,

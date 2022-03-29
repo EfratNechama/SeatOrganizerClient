@@ -49,6 +49,7 @@ export class EventListComponent implements OnInit {
       err => { console.log("get event failed :) "); }
     )
   }
+  
   newEvent() {
 
     const dialogRef = this.dialog.open(EventDetailsComponent, {
@@ -61,6 +62,7 @@ export class EventListComponent implements OnInit {
       console.log('The dialog was closed');
      
       this.loadMyData();
+      
 
     });
   }

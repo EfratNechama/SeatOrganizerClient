@@ -1,10 +1,10 @@
 <div class="ourDialog">
 
-   <form [formGroup]="eventDetailsForm" class="my-form" *ngIf="eventDetailsForm">
+   <form [formGroup]="eventDetailsForm" class="my-form" id="dialog" *ngIf="eventDetailsForm">
       <h1 mat-dialog-title>New event</h1>
       <mat-form-field appearance="fill">
          <mat-label>Your event name</mat-label>
-         <input matInput>
+         <input formControlName="name" matInput>
       </mat-form-field>
 <br>
       <mat-form-field for appearance="fill">
@@ -14,12 +14,21 @@
          <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <br>
+      <mat-label for="file">upload your invitation</mat-label>
+      <input formControlName="invitationImagePath"
+             id="file"
+             type="file"
+             class="form-control"
+             accept="image/*"
+             (change)="onFileChange($event)">
 
-      <mat-label>
-         <!-- <mat-icon>image</mat-icon> -->
+             <img [src]="_imageSrc" *ngIf="_imageSrc" style="height: 50%; width:50%">
+
+      <!-- <mat-label>
+         
       </mat-label>
       <input style="text-align: center;" type="file" formControlName="invitationImage">
-      <br>
+      <br> -->
       <br>
       <div mat-dialog-content>
          <p>Is your event separated?</p>
@@ -83,6 +92,7 @@
 
 
             <br>
+            
             <mat-checkbox (click)="wantSpecial()">You can create one special table. Do you want?
             </mat-checkbox>
             <div *ngIf="_special">
@@ -96,15 +106,14 @@
 
 
          <br>
-         <button (click)="selectCategory()" mat-raised-button color="primary">
-            <mat-icon>add</mat-icon>Choose categories
-         </button>
+         <button (click)="selectCategory()" mat-raised-button color="white" background-color="black">Choose categories</button>
 
 
          <section class="example-section" [formGroup]="categoryGroup">
             <div *ngFor="let c of _generalCategory">
                <p>
-                  <mat-checkbox formControlName="name">{{c.name}}</mat-checkbox>
+                  <input type="checkbox" formControlName="name" id="{{c.name}}">{{c.name}}
+                  <!-- <mat-checkbox formControlName="name" >{{c.name}}</mat-checkbox> -->
                </p>
             </div>
             <div *ngIf="_personalCat">
@@ -116,16 +125,12 @@
                </mat-form-field>
            
                   <mat-icon matTooltip="Add" style="cursor: pointer;" (click)="addPersonalCategory(addedCat.value)" >add</mat-icon>
-               
-
             </div>
-
-
 
          </section>
          <br>
          <button (click)="saveNewEvent()" [disabled]="eventDetailsForm.invalid" mat-raised-button
-            color="primary">save</button>
+         style="color: white;background-color: black ;">save</button>
       </div>
    </form>
 </div>

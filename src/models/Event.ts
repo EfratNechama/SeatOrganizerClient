@@ -1,5 +1,6 @@
 export class Event {
     public id: number;
+    public name?:string;
     public separatedSeats?: boolean;
     public numTablesMale?: number;
     public numTablesFemale?: number;
@@ -9,12 +10,17 @@ export class Event {
     public numSpecialTableChairsFemale?: number;
     public invitationImage?: ImageBitmap
     public eventDate?: Date;
+    public invitationImageName?:string;
+    public invitationImagePath?:string;
+    binaryData?: string;
+
     //ch///
 
     /**
      *
      */
     constructor(id: number,
+        name:string,
         separatedSeats: boolean,
 
         numTablesMale?: number,
@@ -24,7 +30,12 @@ export class Event {
         numSpecialTableChairsMale?: number,
         numSpecialTableChairsFemale?: number,
         invitationImage?: ImageBitmap,
-        eventDate?: Date) {
+        eventDate?: Date,
+        invitationImageName?:string,
+        invitationImagePath?:string,
+        
+        binaryData?: string
+          ) {
 this.id=id;
 
     }

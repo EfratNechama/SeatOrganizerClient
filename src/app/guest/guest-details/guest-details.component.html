@@ -29,7 +29,7 @@
    
 <mat-form-field appearance="fill">
   <mat-label>Category</mat-label>
-  <mat-select  name="category" formControlName="categotyId">
+  <mat-select  name="category" formControlName="categoryId">
     <mat-option *ngFor="let c of _categoryByEventId" [value]=c.id  >
       {{c.name}}
     </mat-option>
@@ -39,7 +39,7 @@
     <!-- <div *ngFor="let c of _categoryByEventId">
         <select >
             seleect category:
-            <input formControlName="categotyId">
+            <input formControlName="categoryId">
         </select>
     </div> -->
     <br>

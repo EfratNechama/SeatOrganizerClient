@@ -18,17 +18,16 @@ export class GuestListComponent implements OnInit {
     private _guestService: GuestService) { }
 
   ngOnInit(): void {
-this.loadGuestList();
+    this.loadGuestList();
 
   }
   _guestList: Guest[] = [];
   _show: boolean = false;
-loadGuestList()
-{
+  loadGuestList() {
 
-  this._guestService.getGuestListByEventId((Number)(sessionStorage.getItem("event"))).subscribe(succ => { this._guestList = succ }, err => { alert("failed") });
+    this._guestService.getGuestListByEventId((Number)(sessionStorage.getItem("event"))).subscribe(succ => { this._guestList = succ }, err => { alert("failed") });
 
-}
+  }
 
   newGuest() {
     // this._show = !this._show
@@ -44,14 +43,18 @@ loadGuestList()
     });
   }
 
-  deleteGuest(g:Guest)
-  {
-    this._guestService.deleteGuest(g.id).subscribe(succ=>{alert("delete succ"); this.loadGuestList();},err=>{alert("delete failed")});
-   
-    
-  }
-  sendEmail(g:Guest)
-  {
+  deleteGuest(g: Guest) {
+    this._guestService.deleteGuest(g.id).subscribe(succ => { alert("delete succ"); this.loadGuestList(); }, err => { alert("delete failed") });
 
+
+  }
+  sendEmail(g: Guest) {
+    console.log("send email button");
+    this._guestService.sendEmailToGuest(g).subscribe(
+      result => {
+        console.log("afterSendEmailToGuest2");
+      }
+    );
+    //postGuest(g,true);
   }
 }

@@ -5,6 +5,7 @@ import { GuestDetailsComponent } from '../guest-details/guest-details.component'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { GuestService } from '../guest.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-guest-list',
@@ -14,7 +15,7 @@ import { GuestService } from '../guest.service';
 export class GuestListComponent implements OnInit {
 
   constructor(private _route: Router, private _activatedRoute: ActivatedRoute,
-    public dialog: MatDialog,
+    public dialog: MatDialog,private _snackBar: MatSnackBar,
     private _guestService: GuestService) { }
 
   ngOnInit(): void {
@@ -53,8 +54,33 @@ export class GuestListComponent implements OnInit {
     this._guestService.sendEmailToGuest(g).subscribe(
       result => {
         console.log("afterSendEmailToGuest2");
+
+
+
+
+        this._snackBar.open('Email sent successfuly', 'V',{duration:4000,  verticalPosition: 'top',  panelClass: ['success']});
+
+
+        
       }
     );
     //postGuest(g,true);
   }
 }
+
+
+
+
+
+// @Component({
+//   selector: 'app-guest-list-snack',
+//   templateUrl: './guest-list-snack.component.html',
+//   styles: [
+//     `
+//     .successSnack {
+//       color: hotpink;
+//     }
+//   `,
+//   ],
+// })
+// export class sentSuccessfullyComponent {}

@@ -41,11 +41,21 @@ export class EventService {
     return this.http.get<Category[]>("/api/Category/");
   }
 
-  postEvent( _imageSrc: ImageSnippet,e?: Event, uId?: number): Observable<number> {
-    const formData = new FormData();
-    formData.append('image', _imageSrc.file);
-    return this.http.post<number>("/api/Event/" + uId + "/", e + "/"+ formData);
-  }
+ 
+  
+
+
+
+  postImage(_imageSrc: ImageSnippet,eId?:number)
+{
+  const formData = new FormData();
+  formData.append('image', _imageSrc.file);
+  return this.http.post<number>("/api/Event/image/" + eId ,formData);
+}
+postEvent(e:Event,uId?:number):Observable<number> {
+  return   this.http.post<number>("/api/Event/"+ uId ,e );
+ 
+}
   
   postCategory(c: Category[]): Observable<any> {
 
@@ -60,6 +70,11 @@ export class EventService {
   setReloadFlag(flag: boolean) {
     this._reloadFlag.next(flag);
   }
+
+
+
+
+
 
 
   // getImagesForUser(): Observable<UserImageModel[]> {

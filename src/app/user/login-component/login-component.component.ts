@@ -40,7 +40,7 @@ login()
     {
       if (data) {
         this._userService._user=data;
-        alert("LogIn success :) welcome "+this._userService._user.userName);
+        //alert("LogIn success :) welcome "+this._userService._user.userName);
         console.log(this._userService._user);
         this._route.navigate(['/event-list',this._userService._user])
       }

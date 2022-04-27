@@ -84,31 +84,35 @@ export class EventDetailsComponent implements OnInit {
     "name": new FormControl()
   })
 
-  saveNewEvent() {
+  async saveNewEvent() {
 
-    this._event = this.eventDetailsForm.value;
-    this.dialogRef.close();
+
+     this._event = this.eventDetailsForm.value;
+     this.dialogRef.close();
     let x;
-    console.log(this.eventDetailsForm.value);
-    this._eventService.postEvent(this._selectedFile, this._event, this._user.id).subscribe(async succ => {
-      this._eventId = succ;
-      this._eventService.setReloadFlag(true);
-      console.log(this._eventId);
-      console.log("in c");
-      let x;
-      await this._generalCategory.forEach(a => {
+     console.log(this.eventDetailsForm.value);
 
-        // x = document.getElementsByName("aa")[0] as HTMLInputElement;
+   let _eventId!:number;
+   await this._eventService.postEvent( this._event, this._user.id).subscribe(succ=>{
+     if(succ){
+      _eventId=succ;console.log(succ);
+      if(this._selectedFile)
+      {
+         this._eventService.postImage(this._selectedFile,_eventId).subscribe(succ=>{console.log("save image succ")})
+      }
+
+     let x;
+      this._generalCategory.forEach(a => {
+
+    
         x = document.getElementById(a.name) as HTMLInputElement;
 
         console.log(x, "x");
-        // if(x == null){
-        //   // x = document.getElementById(a.name) as HTMLInputElement;
-        // }
+  
         if (x !=null && x.checked) this._personalCategory.push(a.name)
 
       });
-      await this._personalCategory.forEach(el => {
+       this._personalCategory.forEach(el => {
         this._sendCategory.push(new Category(0, el, this._eventId));
 
       });
@@ -118,8 +122,44 @@ export class EventDetailsComponent implements OnInit {
 
         //function load data category
         this._route.navigate(['/event-list'])
-      })
-    });
+      });
+    
+
+
+     }
+     else{
+       console.log("failed to return event id");
+     }
+   })
+
+   
+    
+   
+      this._eventService.setReloadFlag(true);
+    
+    //   let x;
+    //   await this._generalCategory.forEach(a => {
+
+    
+    //     x = document.getElementById(a.name) as HTMLInputElement;
+
+    //     console.log(x, "x");
+  
+    //     if (x !=null && x.checked) this._personalCategory.push(a.name)
+
+    //   });
+    //   await this._personalCategory.forEach(el => {
+    //     this._sendCategory.push(new Category(0, el, this._eventId));
+
+    //   });
+    //   this._eventService.postCategory(this._sendCategory).subscribe(succ => {
+
+    //     console.log("post category succesed!");
+
+    //     //function load data category
+    //     this._route.navigate(['/event-list'])
+    //   })
+    // });
   }
 
   onFileChange(event:any) {

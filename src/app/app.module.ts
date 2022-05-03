@@ -15,11 +15,14 @@ import { GuestListComponent } from './guest/guest-list/guest-list.component';
 import { UserModule } from './user/user.module';
 import { MaterialModule } from './material/material.module';
 import { GuestDetailsComponent } from './guest/guest-details/guest-details.component';
+import { GuestConfirmComponent } from './guest/guest-confirm/guest-confirm.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    GuestConfirmComponent,
+    
     // RegistrationComponentComponent,
     // LoginComponentComponent,
     // GuestDetailsComponent,
@@ -36,6 +39,7 @@ import { GuestDetailsComponent } from './guest/guest-details/guest-details.compo
       { path: 'event-details', component: EventDetailsComponent },
       { path: 'guest-list', component: GuestListComponent },
       { path: 'guest-details', component: GuestDetailsComponent },
+      { path: 'guest-confirm', component: GuestConfirmComponent },
       {path:'home' ,component: AppComponent},
     ],
       { useHash: true }),

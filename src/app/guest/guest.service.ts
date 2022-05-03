@@ -23,7 +23,7 @@ export class GuestService {
 
   }
   getGuestListByEventId(eId: number): Observable<Guest[]> {
-    return this.http.get<Guest[]>("api/Guest/" + eId);
+    return this.http.get<Guest[]>("api/Guest/all/" + eId);
   }
 
   postGuest(g: Guest, send: boolean): Observable<any> {
@@ -37,5 +37,15 @@ export class GuestService {
     return this.http.delete<number>("api/Guest/" + gId);
   }
 
+
+
+
+  ///for confirmation
+  getGuestByGuestId(gId:number):Observable<Guest>{
+    return this.http.get<Guest>("api/Guest/one" + gId)
+  }
+putGuestAfterConfirm(g:Guest):Observable<Guest>{
+  return this.http.put<Guest>("api/Guest/"+ g.id,g)
+}
 
 }

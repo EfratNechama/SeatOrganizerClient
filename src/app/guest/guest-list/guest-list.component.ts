@@ -58,7 +58,7 @@ export class GuestListComponent implements OnInit {
 
 
 
-        this._snackBar.open('Email sent successfuly', 'V',{duration:4000,  verticalPosition: 'top',  panelClass: ['success']});
+        this._snackBar.open('Email sent successfuly', '✔',{duration:4000,  verticalPosition: 'top',  panelClass: ['success']});
 
 
         

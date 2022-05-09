@@ -1,6 +1,6 @@
 export class Event {
     public id: number;
-    public name?:string;
+    public name:string;
     public separatedSeats?: boolean;
     public numTablesMale?: number;
     public numTablesFemale?: number;
@@ -37,6 +37,6 @@ export class Event {
         binaryData?: string
           ) {
 this.id=id;
-
+this.name=name;
     }
 }

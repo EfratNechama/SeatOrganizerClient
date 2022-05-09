@@ -70,7 +70,9 @@ postEvent(e:Event,uId?:number):Observable<number> {
   setReloadFlag(flag: boolean) {
     this._reloadFlag.next(flag);
   }
-
+getEventbyEventId(eId?:number):Observable<Event>{
+  return this.http.get<Event>("/api/Event/" + eId);
+}
 
 
 

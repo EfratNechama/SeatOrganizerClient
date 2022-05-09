@@ -1,1 +1,79 @@
-<p>guest-confirm works!</p>
+
+
+
+<div *ngIf="_flag" class="a">
+
+    <mat-card class="my-card">
+    <mat-card-content >
+        <form *ngIf="!_afterSubmit" class="my-form">
+          
+         <h1 mat-dialog-title style="font-weight: bold;">Welcome to our application</h1>
+         <br>
+         <h3 mat-dialog-title style="font-weight: bold;">you invited to {{_event.name}}</h3>
+         <h3>on {{_event.eventDate}}</h3>
+         <br>
+         <mat-checkbox (click)="imComming()">I confirm participation
+            
+
+        </mat-checkbox>
+        <br>
+        <br>
+        <br>
+        
+        <!-- the catogry id of special is 168 -->
+        <div *ngIf="_imComming && this._guest.categoryId!=168"  class="ourDiv">
+            <div *ngIf="!_event.separatedSeats">
+                <p>How many family members are comming?</p>
+           <mat-form-field appearance="fill"class="inputNumber">
+              <input type="number" id="numMale" matInput>
+           </mat-form-field>
+            </div>
+            <div *ngIf="_event.separatedSeats">
+                <p>How many family members are comming?</p>
+           <mat-form-field appearance="fill"class="inputNumber">
+            <mat-label> male</mat-label>
+              <input type="number" id="numMale" matInput>
+           </mat-form-field>
+           <mat-form-field appearance="fill"class="inputNumber">
+            <mat-label> female</mat-label>
+            <input type="number" id="numFemale" matInput>
+         </mat-form-field>
+            </div>
+        </div>
+               <mat-card-actions class="my-form">
+                <!-- SUBMIT BUTTON -->
+                <button mat-raised-button  (click)="submit()" color="primary">SUBMIT</button>
+              </mat-card-actions>
+         
+        </form>
+        <form *ngIf="_afterSubmit"  class="form2">
+            <mat-icon style="font-size: 80px">check_circle</mat-icon>
+           <h2>You have successfully confirmed your participation in: </h2>
+           <h1> {{_event.name}}</h1>
+           <h2>To be held on: {{_event.eventDate}} </h2>
+           <h3>waiting for you!😃😃😃 </h3>
+           <p>
+            To create your own personal account<br>
+            Where you can manage your events and guests<br>
+            Join our circle of satisfied users<br>
+            who enjoy a better event experience<br>
+            
+           </p>
+           <a mat-button routerLink="/register" >Click here                 
+            <mat-icon>keyboard_arrow_right</mat-icon><mat-icon>keyboard_arrow_right</mat-icon>
+          </a>
+          <p>For more details about our site</p>
+          <span ><a mat-button href="/" >
+            Click here  <mat-icon>keyboard_arrow_right</mat-icon><mat-icon>keyboard_arrow_right</mat-icon> 
+            
+          </a></span>
+        </form>
+      </mat-card-content>
+ 
+
+    <br>
+ </mat-card>
+</div>
+<div>
+
+</div>

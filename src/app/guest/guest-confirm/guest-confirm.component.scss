@@ -1,0 +1,47 @@
+.a{
+   color: black;
+}
+.spacer {
+    flex: 1 1 auto;
+  }
+  
+  .my-card{
+    margin: auto;
+    width:45% ;
+    //height: 40%;
+    padding-top: 5%;
+    margin-top: 5%;
+    padding-bottom: 5%;
+    margin-bottom: 5%;
+    opacity: 0.75;
+   //position:relative
+      // max-width: 500px;
+      // margin: auto;
+      // min-width: 150px;
+      
+      // width: 100%;
+      
+    }
+    .my-form{
+      text-align:center;
+      //margin:auto;
+    //  margin: 0%;;
+    //  padding-top: 0%;
+     // padding-bottom: 2%;
+     // margin-bottom: 2%;
+    }
+    .form2{
+        text-align: center;
+        margin:auto;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        margin-bottom: 1%;  
+    }
+   
+  .full-width {
+    width: 100%;
+  }
+  .inputNumber{
+    width: 15%;
+    
+  }

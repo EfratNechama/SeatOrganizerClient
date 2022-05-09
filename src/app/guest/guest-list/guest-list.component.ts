@@ -26,7 +26,7 @@ export class GuestListComponent implements OnInit {
   _show: boolean = false;
   loadGuestList() {
 
-    this._guestService.getGuestListByEventId((Number)(sessionStorage.getItem("event"))).subscribe(succ => { this._guestList = succ }, err => { alert("failed") });
+    this._guestService.getGuestListByEventId((Number)(sessionStorage.getItem("event"))).subscribe(succ => { this._guestList = succ });
 
   }
 

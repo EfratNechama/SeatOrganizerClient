@@ -19,7 +19,7 @@ export class GuestService {
   sendEmailToGuest(g: Guest): Observable<Guest> {
     console.log("sendEmailToGuest");
     debugger;
-    return this.http.put<Guest>("api/Guest/", g);
+    return this.http.put<Guest>("api/Guest/sendEmail/",g);
 
   }
   getGuestListByEventId(eId: number): Observable<Guest[]> {
@@ -34,7 +34,7 @@ export class GuestService {
     return this.http.get<Category[]>("api/Category/" + id);
   }
   deleteGuest(gId: number): Observable<number> {
-    return this.http.delete<number>("api/Guest/" + gId);
+    return this.http.delete<number>("api/Guest/one/" + gId);
   }
 
 
@@ -42,7 +42,7 @@ export class GuestService {
 
   ///for confirmation
   getGuestByGuestId(gId:number):Observable<Guest>{
-    return this.http.get<Guest>("api/Guest/one" + gId)
+    return this.http.get<Guest>("api/Guest/one/" + gId)
   }
 putGuestAfterConfirm(g:Guest):Observable<Guest>{
   return this.http.put<Guest>("api/Guest/"+ g.id,g)

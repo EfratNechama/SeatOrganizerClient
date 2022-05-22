@@ -16,7 +16,9 @@
             {{g.firstName}} {{g.lastName}}
           </mat-panel-description>
           <mat-panel-description> 
-           confirmed?:  {{g.confirmed}}
+          
+             <mat-icon *ngIf="g.confirmed" matTooltip="confirmed">done</mat-icon>
+             <mat-icon *ngIf="!g.confirmed" matTooltip="haven't confirmed yet">clear</mat-icon>
           </mat-panel-description>
           <mat-panel-description> 
               <mat-icon matTooltip="Send guest an email" (click)="sendEmail(g)" mat-raised-button color="black">send</mat-icon>

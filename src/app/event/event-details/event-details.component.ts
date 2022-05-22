@@ -22,7 +22,7 @@ import { ImageSnippet } from 'src/models/imageSnippet';
 })
 export class EventDetailsComponent implements OnInit {
   _selectedFile: any;
-  
+
   constructor(private _eventService: EventService, private _activatedRoute: ActivatedRoute, private _userService: UserService,
     public dialogRef: MatDialogRef<EventDetailsComponent>,
     private _route: Router) { }
@@ -46,6 +46,8 @@ export class EventDetailsComponent implements OnInit {
   _event!: Event;
   _eventId!: number;
 
+  newCategory = new FormControl();
+
 
 
   ngOnInit(): void {
@@ -54,7 +56,7 @@ export class EventDetailsComponent implements OnInit {
     console.log(this._user);
 
   }
-  _imageSrc!: string ;
+  _imageSrc!: string;
   _separated: boolean = false;
   _notSeparate: boolean = false;
   _special: boolean = false;
@@ -71,8 +73,8 @@ export class EventDetailsComponent implements OnInit {
     "numSpecialTableChairsFemale": new FormControl(0),
     "invitationImage": new FormControl(null),
     "eventDate": new FormControl(new Date()),
-    "invitationImageName":new FormControl(""),
-    "invitationImagePath":new FormControl(""),
+    "invitationImageName": new FormControl(""),
+    "invitationImagePath": new FormControl(""),
 
     // name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     // file: new FormControl('', [Validators.required]),
@@ -87,82 +89,50 @@ export class EventDetailsComponent implements OnInit {
   async saveNewEvent() {
 
 
-     this._event = this.eventDetailsForm.value;
-     this.dialogRef.close();
-    let x;
-     console.log(this.eventDetailsForm.value);
+    this._event = this.eventDetailsForm.value;
+    this.dialogRef.close();
 
-   let _eventId!:number;
-   await this._eventService.postEvent( this._event, this._user.id).subscribe(succ=>{
-     if(succ){
-      _eventId=succ;console.log(succ);
-      if(this._selectedFile)
-      {
-         this._eventService.postImage(this._selectedFile,_eventId).subscribe(succ=>{console.log("save image succ")})
+    console.log(this.eventDetailsForm.value);
+
+    let _eventId!: number;
+    await this._eventService.postEvent(this._event, this._user.id).subscribe(succ => {
+      if (succ) {
+        this._eventId = succ; console.log(succ,);
+        if (this._selectedFile) {
+          this._eventService.postImage(this._selectedFile, _eventId).subscribe(succ => { console.log("save image succ") })
+        }
+
+       
+        this._sendCategory = this._generalCategory.filter(c => c.selected)
+        this._sendCategory.forEach(c => {
+          c.eventId = this._eventId;
+          c.id = 0;
+        });
+        console.log(this._sendCategory);
+        this._eventService.postCategory(this._sendCategory).subscribe(succ => {
+
+          console.log("post category succesed!");
+
+          //function load data category
+          this._route.navigate(['/event-list'])
+        });
+
+
+
       }
-
-     let x;
-      this._generalCategory.forEach(a => {
-
-    
-        x = document.getElementById(a.name) as HTMLInputElement;
-
-        console.log(x, "x");
-  
-        if (x !=null && x.checked) this._personalCategory.push(a.name)
-
-      });
-       this._personalCategory.forEach(el => {
-        this._sendCategory.push(new Category(0, el, this._eventId));
-
-      });
-      this._eventService.postCategory(this._sendCategory).subscribe(succ => {
-
-        console.log("post category succesed!");
-
-        //function load data category
-        this._route.navigate(['/event-list'])
-      });
-    
+      else {
+        console.log("failed to return event id");
+      }
+    })
 
 
-     }
-     else{
-       console.log("failed to return event id");
-     }
-   })
 
-   
-    
-   
-      this._eventService.setReloadFlag(true);
-    
-    //   let x;
-    //   await this._generalCategory.forEach(a => {
 
-    
-    //     x = document.getElementById(a.name) as HTMLInputElement;
+    this._eventService.setReloadFlag(true);
 
-    //     console.log(x, "x");
-  
-    //     if (x !=null && x.checked) this._personalCategory.push(a.name)
-
-    //   });
-    //   await this._personalCategory.forEach(el => {
-    //     this._sendCategory.push(new Category(0, el, this._eventId));
-
-    //   });
-    //   this._eventService.postCategory(this._sendCategory).subscribe(succ => {
-
-    //     console.log("post category succesed!");
-
-    //     //function load data category
-    //     this._route.navigate(['/event-list'])
-    //   })
-    // });
   }
 
-  onFileChange(event:any) {
+  onFileChange(event: any) {
     const reader = new FileReader();
 
     if (event.target.files && event.target.files.length) {
@@ -182,10 +152,15 @@ export class EventDetailsComponent implements OnInit {
 
     }
   }
+
+  onSelectedCategoryChange(category: Category): void {
+    category.selected = !category.selected;
+  }
   selectCategory() {
     this._personalCat = !this._personalCat;
     this._eventService.getGeneralCategory().subscribe(succ => {
       this._generalCategory = succ;
+      this._generalCategory.forEach(c => c.selected = false);
       console.log(this._generalCategory)
     }
       // , 
@@ -193,29 +168,31 @@ export class EventDetailsComponent implements OnInit {
     )
   }
   addPersonalCategory(c: string) {
-    this._personalCategory.push(c);
+    // this._personalCategory.push(c);
+    this._generalCategory.push({name: c, selected: false} as Category);
+    this.newCategory.setValue(null);
     console.log(this._personalCategory)
   }
 
-  addGeneralCategory(c: string, f: boolean) {
-    if (f) {
-      console.log("exist");
-    }
-    else {
-      this._personalCategory.push(c);
-      console.log(this._personalCategory);
-    }
-    if (this._personalCategory.includes(c)) {
-      console.log("exist");
-    }
-    else {
-      this._personalCategory.push(c);
-      console.log(this._personalCategory);
+  // addGeneralCategory(c: string, f: boolean) {
+  //   if (f) {
+  //     console.log("exist");
+  //   }
+  //   else {
+  //     this._personalCategory.push(c);
+  //     console.log(this._personalCategory);
+  //   }
+  //   if (this._personalCategory.includes(c)) {
+  //     console.log("exist");
+  //   }
+  //   else {
+  //     this._personalCategory.push(c);
+  //     console.log(this._personalCategory);
 
 
-    }
+  //   }
 
-  }
+  // }
 
   notSeparated() {
     this._notSeparate = !this._notSeparate;
@@ -238,33 +215,7 @@ export class EventDetailsComponent implements OnInit {
     this._special = !this._special;
   }
 
-  //  <HTMLScriptElement[]><any>document.getElementsByName(id))[0];
-
-  // this._generalCategory.forEach(a => { var x= document.getElementsByName(a.name)[0] as HTMLInputElement;if(x.checked) this._personalCategory.push(a.name) });
-
-
-  // saveImage(){
-  //   console.log(this.eventDetailsForm.value);
-  //  // let postImage = new UserImageModel();
-  //   //postImage.fileName = this.myForm.value.file;
-  //   //postImage.binaryData = this.myForm.value.fileSource;
-
-  //   this._eventService.postEvent(this._selectedFile)
-  //     .subscribe(res => {
-  //       console.log(res);
-  //       alert('Uploaded Successfully.');
-  //       this._eventService.setReloadFlag(true);
-  //     },
-  //       error => {
-  //         let errorMsg: string;
-  //         //if (error.error instanceof ErrorEvent) {
-  //         //  errorMsg = `שגיאה בשמירת תמונה: ${error.error.message}`;
-  //         //} else {
-  //         //  errorMsg = this.getServerErrorMessage(error);
-  //         //}
-  //         alert(error.error)
-  //       });
-  // }
+ 
 }
 
 

@@ -112,7 +112,7 @@
          <section class="example-section" [formGroup]="categoryGroup">
             <div *ngFor="let c of _generalCategory">
                <p>
-                  <input type="checkbox" formControlName="name" id="{{c.name}}">{{c.name}}
+                  <input type="checkbox" [value]="c.selected" id="{{c.name}}" (change)="onSelectedCategoryChange(c)">{{c.name}}
                   <!-- <mat-checkbox formControlName="name" >{{c.name}}</mat-checkbox> -->
                </p>
             </div>
@@ -120,11 +120,11 @@
                <mat-form-field appearance="fill" >
 
                   <mat-label> Add personal category</mat-label>
-                  <input #addedCat matInput>
+                  <input #addedCat matInput [formControl]="newCategory">
 
                </mat-form-field>
            
-                  <mat-icon matTooltip="Add" style="cursor: pointer;" (click)="addPersonalCategory(addedCat.value)" >add</mat-icon>
+                  <mat-icon matTooltip="Add" style="cursor: pointer;" (click)="addPersonalCategory(newCategory.value)" >add</mat-icon>
             </div>
 
          </section>

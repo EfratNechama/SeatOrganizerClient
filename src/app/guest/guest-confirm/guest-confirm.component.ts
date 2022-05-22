@@ -16,11 +16,12 @@ export class GuestConfirmComponent implements OnInit {
 
   constructor(private _route: Router, private _activatedRoute: ActivatedRoute,
     private _guestService: GuestService,private _eventService:EventService) { 
-
+     this._activatedRoute.queryParams.subscribe(
+        params => this._guestId=params['id']);
     }
 
   //צריך לקבל מהלינק
-  _guestId=104;
+  _guestId!:number;
   _guest!:Guest;
   _event!:Event;
   _flag!:boolean;
@@ -41,10 +42,14 @@ this._imComming=!this._imComming;
      if(this._imComming)
      {
     //  this._guest.numFamilyMembersMale
-      
-      this._guest.numFamilyMembersMale=(Number)((<HTMLInputElement>document.getElementById("numMale")).value);
-      this._guest.numFamilyMembersFemale=(Number)((<HTMLInputElement>document.getElementById("numFemale")).value);
       this._guest.confirmed=true;
+      this._guest.numFamilyMembersMale=(Number)((<HTMLInputElement>document.getElementById("numMale")).value);
+
+      if(this._event.separatedSeats)
+      {
+        this._guest.numFamilyMembersFemale=(Number)((<HTMLInputElement>document.getElementById("numFemale")).value);
+      }
+    
      }
      this._guestService.putGuestAfterConfirm(this._guest).subscribe(succ=>{console.log(succ,this._afterSubmit=true)})
      

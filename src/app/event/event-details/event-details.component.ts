@@ -4,9 +4,10 @@ import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 import { User } from 'src/models/User';
 import { Event } from 'src/models/Event';
 import { Category } from 'src/models/Category';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import {FormBuilder} from '@angular/forms';
 import { UserService } from 'src/app/user/user.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -23,7 +24,13 @@ import { ImageSnippet } from 'src/models/imageSnippet';
 export class EventDetailsComponent implements OnInit {
   _selectedFile: any;
 
-  constructor(private _eventService: EventService, private _activatedRoute: ActivatedRoute, private _userService: UserService,
+  // firstFormGroup!: FormGroup ;
+  // secondFormGroup!: FormGroup;
+  // thirdFormGroup!: FormGroup;
+isEditable = false;
+
+
+  constructor(private _eventService: EventService, private _activatedRoute: ActivatedRoute, private _userService: UserService,private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<EventDetailsComponent>,
     private _route: Router) { }
 
@@ -32,9 +39,7 @@ export class EventDetailsComponent implements OnInit {
   }
   @Input()
   _user!: User;
-
-
-
+ 
   @Output()
   onCreateEvent: EventEmitter<Event> = new EventEmitter();
 
@@ -51,6 +56,34 @@ export class EventDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+
+
+    // this.firstFormGroup = this._formBuilder.group({
+    //   firstCtrl: ['', Validators.required],
+    // });
+    // this.secondFormGroup = this._formBuilder.group({
+    //   secondCtrl: ['', Validators.required],
+    // });
+    // this.thirdFormGroup = this._formBuilder.group({
+    //  thirdCtrl: ['', Validators.required],
+    // });
+
+
+    // this._personalCat = !this._personalCat;
+    this._eventService.getGeneralCategory().subscribe(succ => {
+      this._generalCategory = succ;
+      this._generalCategory.forEach(c => c.selected = false);
+      console.log(this._generalCategory)
+    }
+      // , 
+      // err => { alert("can't get category :( ") }
+    )
+
+
+
+
+
 
     this._user = this._userService._user;
     console.log(this._user);
@@ -75,6 +108,7 @@ export class EventDetailsComponent implements OnInit {
     "eventDate": new FormControl(new Date()),
     "invitationImageName": new FormControl(""),
     "invitationImagePath": new FormControl(""),
+    // "categoryIds": new FormArray([])
 
     // name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     // file: new FormControl('', [Validators.required]),
@@ -85,6 +119,14 @@ export class EventDetailsComponent implements OnInit {
   categoryGroup: FormGroup = new FormGroup({
     "name": new FormControl()
   })
+
+  addCategoryGroup() {
+    // return new FormGroup({
+    //   "id": new FormControl(),
+    //   "name": new FormControl()
+    // })
+    return new FormControl()
+  }
 
   async saveNewEvent() {
 
@@ -97,9 +139,10 @@ export class EventDetailsComponent implements OnInit {
     let _eventId!: number;
     await this._eventService.postEvent(this._event, this._user.id).subscribe(succ => {
       if (succ) {
-        this._eventId = succ; console.log(succ,);
+  
+        this._eventId = succ; console.log(succ);
         if (this._selectedFile) {
-          this._eventService.postImage(this._selectedFile, _eventId).subscribe(succ => { console.log("save image succ") })
+          this._eventService.postImage(this._selectedFile, this._eventId).subscribe(succ => { console.log("save image succ") })
         }
 
        
@@ -155,6 +198,7 @@ export class EventDetailsComponent implements OnInit {
 
   onSelectedCategoryChange(category: Category): void {
     category.selected = !category.selected;
+    // (this.eventDetailsForm.get('categoryIds') as FormArray).removeAt(index);
   }
   selectCategory() {
     this._personalCat = !this._personalCat;
@@ -169,7 +213,7 @@ export class EventDetailsComponent implements OnInit {
   }
   addPersonalCategory(c: string) {
     // this._personalCategory.push(c);
-    this._generalCategory.push({name: c, selected: false} as Category);
+    this._generalCategory.push({name: c, selected: true} as Category);
     this.newCategory.setValue(null);
     console.log(this._personalCategory)
   }

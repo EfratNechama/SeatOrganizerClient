@@ -18,7 +18,9 @@
          <mat-panel-description> 
             {{e.id}}
          </mat-panel-description>
-
+         <mat-panel-description class="hide"> 
+            <button (click)="doPlacement(e)" mat-raised-button color="black"> Placement</button>
+         </mat-panel-description>
          <mat-panel-description class="hide"> 
             <button (click)="viewGuest(e)" mat-raised-button color="black"> view my guests </button>
          </mat-panel-description>

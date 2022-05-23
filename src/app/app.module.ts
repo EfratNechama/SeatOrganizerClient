@@ -16,13 +16,16 @@ import { UserModule } from './user/user.module';
 import { MaterialModule } from './material/material.module';
 import { GuestDetailsComponent } from './guest/guest-details/guest-details.component';
 import { GuestConfirmComponent } from './guest/guest-confirm/guest-confirm.component';
+import { DisplayPlacementComponent } from './placement/display-placement/display-placement.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GuestConfirmComponent,
-    
+    DisplayPlacementComponent,
+   
     // RegistrationComponentComponent,
     // LoginComponentComponent,
     // GuestDetailsComponent,
@@ -40,6 +43,7 @@ import { GuestConfirmComponent } from './guest/guest-confirm/guest-confirm.compo
       { path: 'guest-list', component: GuestListComponent },
       { path: 'guest-details', component: GuestDetailsComponent },
       { path: 'guest-confirm', component: GuestConfirmComponent },
+      { path: 'display-placement', component: DisplayPlacementComponent },
       {path:'home' ,component: AppComponent},
     ],
       { useHash: true }),

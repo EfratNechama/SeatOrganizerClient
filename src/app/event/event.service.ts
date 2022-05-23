@@ -74,6 +74,10 @@ getEventbyEventId(eId?:number):Observable<Event>{
   return this.http.get<Event>("/api/Event/" + eId);
 }
 
+calcPlace(e?:Event):Observable<any>{
+  return this.http.post<any>("/api/Placement/" ,e);
+}
+
 
 
 

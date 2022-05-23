@@ -54,7 +54,7 @@ export class EventListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(EventDetailsComponent, {
       height: '70%',
-      width: '25%',
+      width: '50%',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -68,6 +68,11 @@ export class EventListComponent implements OnInit {
   }
   //this._route.navigate(['/event-details']);
 
+  doPlacement(e:Event){
+    this._eventService.calcPlace(e).subscribe(succ=>{console.log("placement success!");
+    sessionStorage.setItem("event",  JSON.stringify(e));
+    this._route.navigate(['/display-placement']);})
+  }
 
   viewGuest(e: Event) {
     sessionStorage.setItem("event", (e.id).toString());

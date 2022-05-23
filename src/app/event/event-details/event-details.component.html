@@ -1,12 +1,202 @@
 <div class="ourDialog">
 
-   <form [formGroup]="eventDetailsForm" class="my-form" id="dialog" *ngIf="eventDetailsForm">
+   <form  class="my-form" id="dialog" *ngIf="eventDetailsForm">
       <h1 mat-dialog-title>New event</h1>
-      <mat-form-field appearance="fill">
+       
+       <mat-stepper linear #stepper>
+        
+         <!-- <mat-step [editable]="isEditable" > -->
+        <mat-step >
+           <form [formGroup]="eventDetailsForm">
+            <ng-template matStepLabel>Name & Date</ng-template>
+              <mat-form-field appearance="fill">
          <mat-label>Your event name</mat-label>
          <input formControlName="name" matInput>
       </mat-form-field>
-<br>
+
+      <mat-form-field for appearance="fill">
+         <mat-label>Choose a date</mat-label>
+         <input formControlName="eventDate" matInput [matDatepicker]="picker">
+         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br>
+      <p>Is your event separated?</p>
+      <mat-radio-group aria-label="Select an option" formControlName="separatedSeats">
+         <mat-radio-button [value]="true" name="seats" (click)="separated()">yes
+         </mat-radio-button>
+         <mat-radio-button [value]="false" name="seats" (click)="notSeparated()">no
+         </mat-radio-button>
+      </mat-radio-group>
+      <br>
+      <mat-label for="file">upload your invitation</mat-label>
+      <input formControlName="invitationImagePath"
+             id="file"
+             type="file"
+             class="form-control"
+             accept="image/*"
+             (change)="onFileChange($event)">
+
+             <img [src]="_imageSrc" *ngIf="_imageSrc" style="height: 50%; width:50%">
+
+
+      <br>
+      <br>
+           
+
+             <div> 
+               <button mat-button matStepperNext>Next</button>
+             </div>
+
+           </form>
+         </mat-step>
+
+
+
+
+
+
+
+
+         <mat-step >
+           <form [formGroup]="eventDetailsForm">
+             <ng-template matStepLabel>Tables & Chairs</ng-template>
+
+
+             <div *ngIf="_separated" class="ourDiv">
+               <p>How many tables?</p>
+               <mat-form-field appearance="fill" class="inputNumber">
+                  <mat-label> male</mat-label>
+                  <input type="number" formControlName="numTablesMale" matInput>
+               </mat-form-field>
+               <mat-form-field appearance="fill" class="inputNumber">
+                  <mat-label> female</mat-label>
+                  <input type="number" formControlName="numTablesFemale" matInput>
+               </mat-form-field>
+               <p>How many chairs per table?</p>
+               <mat-form-field appearance="fill" class="inputNumber">
+                  <mat-label> male</mat-label>
+                  <input type="number" formControlName="numChairsMale" matInput>
+               </mat-form-field>
+               <mat-form-field appearance="fill" class="inputNumber">
+                  <mat-label> female</mat-label>
+                  <input type="number" formControlName="numChairsFemale" matInput>
+               </mat-form-field>
+   
+               <br>
+               <mat-checkbox (click)="wantSpecial()">You can create one special table for each section. Do you want?
+               </mat-checkbox>
+               <div *ngIf="_special" class="ourDiv">
+                  <p>How many chairs per special table?</p>
+                  <mat-form-field appearance="fill"class="inputNumber">
+                     <mat-label> male</mat-label>
+                     <input type="number" formControlName="numSpecialTableChairsMale" matInput>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" class="inputNumber">
+                     <mat-label> female</mat-label>
+                     <input type="number" formControlName="numSpecialTableChairsFemale" matInput>
+                  </mat-form-field>
+               </div>
+   
+            </div>
+   
+   
+   
+   
+            <div *ngIf="_notSeparate">
+               <mat-form-field appearance="fill" class="inputNumber" style="width:20%">
+                  <mat-label> How many tables?</mat-label>
+                  <input type="number" formControlName="numTablesMale" matInput>
+               </mat-form-field>
+               <br>
+               <mat-form-field appearance="fill" class="inputNumber"  style="width:20%">
+                  <mat-label> How many chairs per table?</mat-label>
+                  <input type="number" formControlName="numChairsMale" matInput>
+               </mat-form-field>
+   
+   
+               <br>
+               
+               <mat-checkbox (click)="wantSpecial()">You can create one special table. Do you want?
+               </mat-checkbox>
+               <div *ngIf="_special">
+                  <mat-form-field appearance="fill"class="inputNumber">
+                     <mat-label> How many chairs in special table?</mat-label>
+                     <input type="number" formControlName="numSpecialTableChairsMale" matInput>
+                  </mat-form-field>
+               </div>
+            </div>
+           
+   
+             <div>
+               <button mat-button matStepperPrevious>Back</button>
+               <button mat-button matStepperNext (click)="selectCategory()" >Next</button>
+             </div>
+           </form>
+         </mat-step>
+
+
+
+         <mat-step (click)="selectCategory()">
+            <form [formGroup]="eventDetailsForm">
+             <ng-template matStepLabel   >Group</ng-template>
+      
+          <mat-label>Choose groups for your guests</mat-label>
+        
+              <br>
+     
+     
+              <section class="example-section" >
+                 <div *ngFor="let c of _generalCategory">
+                    <p>
+                       <input type="checkbox" [checked]="c.selected" id="{{c.name}}" (change)="onSelectedCategoryChange(c)">{{c.name}}
+                       
+                    </p>
+                 </div>
+                 <div *ngIf="_personalCat">
+                    <mat-form-field appearance="fill" >
+     
+                       <mat-label> Add</mat-label>
+                       <input #addedCat matInput [formControl]="newCategory">
+     
+                    </mat-form-field>
+                
+                       <mat-icon matTooltip="Add" style="cursor: pointer;" (click)="addPersonalCategory(newCategory.value)" >add</mat-icon>
+                 </div>
+     
+              </section>
+              <br>
+              <div> 
+               <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+   
+
+
+
+         <mat-step>
+           <ng-template matStepLabel>Done</ng-template>
+           <br>
+           <button (click)="saveNewEvent()" [disabled]="eventDetailsForm.invalid" mat-raised-button
+           style="color: white;background-color: black ;">save</button>
+           <div>
+             <button mat-button matStepperPrevious>Back</button>
+         
+           </div>
+         </mat-step>
+       </mat-stepper>
+
+ 
+
+      
+
+
+      <!-- <mat-form-field appearance="fill">
+         <mat-label>Your event name</mat-label>
+         <input formControlName="name" matInput>
+      </mat-form-field>
       <mat-form-field for appearance="fill">
          <mat-label>Choose a date</mat-label>
          <input formControlName="eventDate" matInput [matDatepicker]="picker">
@@ -24,11 +214,7 @@
 
              <img [src]="_imageSrc" *ngIf="_imageSrc" style="height: 50%; width:50%">
 
-      <!-- <mat-label>
-         
-      </mat-label>
-      <input style="text-align: center;" type="file" formControlName="invitationImage">
-      <br> -->
+
       <br>
       <div mat-dialog-content>
          <p>Is your event separated?</p>
@@ -39,7 +225,7 @@
             </mat-radio-button>
          </mat-radio-group>
          <br><br>
-         <!-- <mat-card> -->
+         
          <div *ngIf="_separated" class="ourDiv">
             <p>How many tables?</p>
             <mat-form-field appearance="fill" class="inputNumber">
@@ -102,18 +288,18 @@
                </mat-form-field>
             </div>
          </div>
-         <!-- </mat-card> -->
+        
 
 
          <br>
          <button (click)="selectCategory()" mat-raised-button color="white" background-color="black">Choose categories</button>
 
 
-         <section class="example-section" [formGroup]="categoryGroup">
+         <section class="example-section" >
             <div *ngFor="let c of _generalCategory">
                <p>
-                  <input type="checkbox" [value]="c.selected" id="{{c.name}}" (change)="onSelectedCategoryChange(c)">{{c.name}}
-                  <!-- <mat-checkbox formControlName="name" >{{c.name}}</mat-checkbox> -->
+                  <input type="checkbox" [checked]="c.selected" id="{{c.name}}" (change)="onSelectedCategoryChange(c)">{{c.name}}
+                  
                </p>
             </div>
             <div *ngIf="_personalCat">
@@ -131,6 +317,6 @@
          <br>
          <button (click)="saveNewEvent()" [disabled]="eventDetailsForm.invalid" mat-raised-button
          style="color: white;background-color: black ;">save</button>
-      </div>
-   </form>
-</div>
+      </div> -->
+   <!-- </form> -->
+<!-- </div> -->

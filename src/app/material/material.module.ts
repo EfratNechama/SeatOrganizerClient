@@ -19,6 +19,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -28,12 +29,12 @@ import {MatStepperModule} from '@angular/material/stepper';
     CommonModule,
     MatExpansionModule,MatToolbarModule,MatSliderModule,MatButtonModule,MatDatepickerModule,MatNativeDateModule,
     MatRadioModule,MatListModule,MatInputModule,MatFormFieldModule,MatCardModule,MatIconModule,MatCheckboxModule,
-    MatDialogModule,MatTooltipModule,MatSelectModule,MatSnackBarModule,MatStepperModule
+    MatDialogModule,MatTooltipModule,MatSelectModule,MatSnackBarModule,MatStepperModule,MatTableModule
   ],
   exports:[
     MatExpansionModule,MatToolbarModule,MatSliderModule,MatButtonModule,MatDatepickerModule,MatNativeDateModule,
     MatRadioModule,MatListModule,MatInputModule,MatFormFieldModule,MatCardModule,MatIconModule,MatCheckboxModule,
-    MatDialogModule,MatTooltipModule,MatSelectModule,MatSnackBarModule,MatStepperModule
+    MatDialogModule,MatTooltipModule,MatSelectModule,MatSnackBarModule,MatStepperModule,MatTableModule
   ]
 })
 export class MaterialModule { }

@@ -91,7 +91,7 @@ isEditable = false;
   }
   _imageSrc!: string;
   _separated: boolean = false;
-  _notSeparate: boolean = false;
+  _notSeparate: boolean = true;
   _special: boolean = false;
   _personalCat: boolean = false;
   eventDetailsForm: FormGroup = new FormGroup({

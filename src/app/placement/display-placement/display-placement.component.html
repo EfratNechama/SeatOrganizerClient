@@ -1,1 +1,46 @@
-<p>display-placement works!</p>
+<div class="a">
+<h1 >This is your map!</h1>
+<h2></h2>
+
+<div class="wrap">
+<div *ngFor="let t of _myTableIds"  >
+    <mat-card> 
+        <mat-card-title >Table code  {{t}}</mat-card-title>
+       {{filterGuest(t)}}
+       <!-- <div *ngFor="let g of _filterGuest"> -->
+
+
+        <table mat-table [dataSource]="_filterGuest" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="firstName">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.firstName}}  {{element.lastName}}   </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="numMembersInTable">
+              <th mat-header-cell *matHeaderCellDef> Seats </th>
+              <td mat-cell *matCellDef="let element"> {{element.numMembersInTable}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="category">
+              <th mat-header-cell *matHeaderCellDef> Group </th>
+              <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+            </ng-container>
+          
+ 
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+<!-- 
+       </div> -->
+    </mat-card>
+    <br>
+
+</div></div></div>

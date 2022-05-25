@@ -21,13 +21,13 @@
          <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <br>
-      <p>Is your event separated?</p>
+      <!-- <p>Is your event separated?</p>
       <mat-radio-group aria-label="Select an option" formControlName="separatedSeats">
          <mat-radio-button [value]="true" name="seats" (click)="separated()">yes
          </mat-radio-button>
          <mat-radio-button [value]="false" name="seats" (click)="notSeparated()">no
          </mat-radio-button>
-      </mat-radio-group>
+      </mat-radio-group> -->
       <br>
       <mat-label for="file">upload your invitation</mat-label>
       <input formControlName="invitationImagePath"
@@ -63,7 +63,7 @@
              <ng-template matStepLabel>Tables & Chairs</ng-template>
 
 
-             <div *ngIf="_separated" class="ourDiv">
+             <!-- <div *ngIf="_separated" class="ourDiv">
                <p>How many tables?</p>
                <mat-form-field appearance="fill" class="inputNumber">
                   <mat-label> male</mat-label>
@@ -98,12 +98,12 @@
                   </mat-form-field>
                </div>
    
-            </div>
+            </div> -->
    
    
    
    
-            <div *ngIf="_notSeparate">
+            <div >
                <mat-form-field appearance="fill" class="inputNumber" style="width:20%">
                   <mat-label> How many tables?</mat-label>
                   <input type="number" formControlName="numTablesMale" matInput>

@@ -45,3 +45,22 @@
     width: 15%;
     
   }
+  .openCamera{
+    display: inline-flex;
+    vertical-align: top;
+}
+  p{
+    vertical-align: bottom;
+  }
+  img{
+    width: 20%;
+  }
+  .mat-form-field{
+    width:  10%;
+  }
+  .snapshot{
+    text-align: center;
+    img{
+   width: 20%;
+    }
+}

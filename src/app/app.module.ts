@@ -17,7 +17,8 @@ import { MaterialModule } from './material/material.module';
 import { GuestDetailsComponent } from './guest/guest-details/guest-details.component';
 import { GuestConfirmComponent } from './guest/guest-confirm/guest-confirm.component';
 import { DisplayPlacementComponent } from './placement/display-placement/display-placement.component';
-
+import {WebcamModule} from 'ngx-webcam';
+import { CameraComponent } from './camera/camera.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { DisplayPlacementComponent } from './placement/display-placement/display
     AppComponent,
     GuestConfirmComponent,
     DisplayPlacementComponent,
+    CameraComponent,
    
     // RegistrationComponentComponent,
     // LoginComponentComponent,
@@ -33,6 +35,7 @@ import { DisplayPlacementComponent } from './placement/display-placement/display
     // GuestListComponent
   ],
   imports: [
+    WebcamModule,
     BrowserModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },

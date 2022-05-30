@@ -12,21 +12,19 @@
          <h3 mat-dialog-title style="font-weight: bold;">you invited to {{_event.name}}</h3>
          <h3>on {{_event.eventDate}}</h3>
          <br>
-         <mat-checkbox (click)="imComming()">I confirm participation
+         <!-- <mat-checkbox (click)="imComming()">I confirm participation -->
             
 
-        </mat-checkbox>
-        <br>
-        <br>
-        <br>
+        <!-- </mat-checkbox> -->
+      
         
         <!-- the catogry id of special is 168 -->
-        <div *ngIf="_imComming && this._guest.categoryId!=168"  class="ourDiv">
+        <div *ngIf="this._guest.categoryId!=168"  class="ourDiv">
             <div *ngIf="!_event.separatedSeats">
-                <p>How many family members are comming?</p>
-           <mat-form-field appearance="fill"class="inputNumber">
-              <input type="number" id="numMale" matInput>
-           </mat-form-field>
+                <p>How many family members are comming?           <mat-form-field appearance="fill"class="inputNumber">
+                  <input type="number" id="numMale" matInput>
+               </mat-form-field></p>
+
             </div>
             <div *ngIf="_event.separatedSeats">
                 <p>How many family members are comming?</p>
@@ -40,6 +38,18 @@
          </mat-form-field>
             </div>
         </div>
+
+<p>For verification at the entrance to the hall <br> open camera here <mat-icon matTooltip="open" class="openCamera" (click)="openCamera()">photo_camera</mat-icon></p>
+
+
+<br>
+<div *ngIf="_openCamera">
+  <app-camera (pictureTaken)="handleImage($event)"></app-camera>
+  <div class="snapshot" *ngIf="webcamImage">
+  <img [src]="webcamImage.imageAsDataUrl" />
+</div>
+
+</div>
                <mat-card-actions class="my-form">
                 <!-- SUBMIT BUTTON -->
                 <button mat-raised-button  (click)="submit()" color="primary">SUBMIT</button>

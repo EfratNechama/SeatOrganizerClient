@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { WebcamImage } from 'ngx-webcam';
 import { Observable } from 'rxjs';
 import { Category } from 'src/models/Category';
 import { Guest } from 'src/models/Guest';
+import { ImageSnippet } from 'src/models/imageSnippet';
 
 //--proxy-config src/proxy.config.json 
 @Injectable({
@@ -44,8 +46,10 @@ export class GuestService {
   getGuestByGuestId(gId:number):Observable<Guest>{
     return this.http.get<Guest>("api/Guest/one/" + gId)
   }
-putGuestAfterConfirm(g:Guest):Observable<Guest>{
-  return this.http.put<Guest>("api/Guest/"+ g.id,g)
+putGuestAfterConfirm(g:Guest,guestImg:WebcamImage):Observable<Guest>{
+ const formData = new FormData();
+  formData.append('image', guestImg.imageAsBase64);
+  return this.http.put<Guest>("api/Guest/image/"+ g.id, formData)
 }
 
 }

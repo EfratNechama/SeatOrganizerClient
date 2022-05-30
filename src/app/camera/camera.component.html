@@ -1,0 +1,26 @@
+<div style="text-align:center">
+    <div>
+        <table >
+            <tr>
+
+                <td>
+                    <webcam [height]="250" [width]="250" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+                    [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
+                    (initError)="handleInitError($event)"></webcam>
+                </td>
+                <td>
+                    <div class="actionBtn" (click)="triggerSnapshot();" ><mat-icon style="font-size: 300%;" matTooltip="snap"> add_photo_alternate</mat-icon></div>
+                </td>
+            </tr>
+        </table>
+   
+    <br/>
+   
+    <!-- <br>
+    <div class="actionBtn" (click)="showNextWebcam(true);" title="Switch Camera">🔁</div>
+    </div> -->
+    </div>
+    <h4 *ngIf="errors.length > 0">Messages:</h4>
+    <ul *ngFor="let error of errors">
+    <li>{{error | json}}</li>
+    </ul>

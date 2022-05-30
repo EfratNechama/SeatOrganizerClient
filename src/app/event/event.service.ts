@@ -50,6 +50,7 @@ export class EventService {
 {
   const formData = new FormData();
   formData.append('image', _imageSrc.file);
+  debugger;
   return this.http.post<number>("/api/Event/image/" + eId ,formData);
 }
 postEvent(e:Event,uId?:number):Observable<number> {

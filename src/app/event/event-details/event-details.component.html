@@ -9,18 +9,25 @@
         <mat-step >
            <form [formGroup]="eventDetailsForm">
             <ng-template matStepLabel>Name & Date</ng-template>
-              <mat-form-field appearance="fill">
+
+<table>
+   <tr>
+      <td><mat-form-field appearance="fill" style="width: 70%;">
          <mat-label>Your event name</mat-label>
          <input formControlName="name" matInput>
-      </mat-form-field>
-
-      <mat-form-field for appearance="fill">
+      </mat-form-field></td>
+      <td> <mat-form-field for appearance="fill" style="width: 70%;">
          <mat-label>Choose a date</mat-label>
          <input formControlName="eventDate" matInput [matDatepicker]="picker">
          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
          <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <br>
+      </mat-form-field></td>
+   </tr>
+
+
+</table>
+
+
       <!-- <p>Is your event separated?</p>
       <mat-radio-group aria-label="Select an option" formControlName="separatedSeats">
          <mat-radio-button [value]="true" name="seats" (click)="separated()">yes
@@ -28,20 +35,22 @@
          <mat-radio-button [value]="false" name="seats" (click)="notSeparated()">no
          </mat-radio-button>
       </mat-radio-group> -->
-      <br>
-      <mat-label for="file">upload your invitation</mat-label>
-      <input formControlName="invitationImagePath"
-             id="file"
-             type="file"
-             class="form-control"
-             accept="image/*"
-             (change)="onFileChange($event)">
+     
+   
+
+      
+
+      <mat-label >Your invitation  <input formControlName="invitationImagePath"
+         id="file"
+         type="file"
+         class="form-control"
+         accept="image/*"
+         (change)="onFileChange($event)"></mat-label>
+     
 
              <img [src]="_imageSrc" *ngIf="_imageSrc" style="height: 50%; width:50%">
 
 
-      <br>
-      <br>
            
 
              <div> 

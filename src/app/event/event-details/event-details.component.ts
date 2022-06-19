@@ -12,6 +12,7 @@ import { UserService } from 'src/app/user/user.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ImageSnippet } from 'src/models/imageSnippet';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -32,6 +33,8 @@ isEditable = false;
 
   constructor(private _eventService: EventService, private _activatedRoute: ActivatedRoute, private _userService: UserService,private _formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<EventDetailsComponent>,
+  
+    
     private _route: Router) { }
 
   onNoClick(): void {
@@ -130,8 +133,9 @@ isEditable = false;
 
   async saveNewEvent() {
 
-
+   // var helpS = this.datepipe.transform(this.eventDetailsForm.controls["eventDate"].value, 'yyyy-MM-dd');
     this._event = this.eventDetailsForm.value;
+   
     this.dialogRef.close();
 
     console.log(this.eventDetailsForm.value);

@@ -9,7 +9,48 @@
 <mat-accordion *ngFor="let e of _eventList" class="tbl" style="width:70%">
    <mat-expansion-panel hideToggle class="tbl">
       <mat-expansion-panel-header>
-         <mat-panel-title>
+         
+            <table>
+               <tr>
+                  <td class="a1">
+                     <mat-panel-title>
+                      <u><b>{{e.name}} </b> </u>
+                     </mat-panel-title>
+                  </td>
+                  <td class="a1">
+                     <mat-panel-description> 
+                        <b>{{e.eventDate|date:'dd/MM/yyyy'}}</b>
+                     </mat-panel-description>
+                  </td>
+                  <td class="a5">
+                     <mat-panel-description> 
+                        {{e.id}}
+                     </mat-panel-description>
+                  </td>
+                  <td class="a5">
+                     <mat-panel-description class="hide"> 
+                        <img src="assets\guest.png" class="a4" (click)="viewGuest(e)" mat-raised-button color="black" matTooltip="Invite guests">
+                        <!-- <mat-icon (click)="viewGuest(e)" >groups</mat-icon> -->
+                        <!-- <button (click)="viewGuest(e)" mat-raised-button color="black"> view my guests </button> -->
+                     </mat-panel-description>
+                  </td>
+                  <td class="a5">
+                     <mat-panel-description class="hide"> 
+                        <img src="assets\icon_placement.jpg" class="a3" (click)="doPlacement(e)" mat-raised-button color="black" matTooltip="Placement">
+                        <!-- <button (click)="doPlacement(e)" mat-raised-button color="black"> Placement</button> -->
+                     </mat-panel-description>
+                  </td>
+                
+                  <td class="a5">
+                     <mat-panel-description class="hide"> 
+                        
+                        <mat-icon (click)="deleteEvent(e)" mat-raised-button color="black" class="iconNotVisible" matTooltip="Delete"> delete</mat-icon> 
+                     </mat-panel-description> 
+                  </td>
+               </tr>
+            </table>
+        
+         <!-- <mat-panel-title>
             {{e.name}}
          </mat-panel-title>
          <mat-panel-description> 
@@ -26,44 +67,44 @@
          </mat-panel-description>
          <mat-panel-description class="hide"> 
             <mat-icon (click)="deleteEvent(e)" mat-raised-button color="black"> delete</mat-icon> 
-         </mat-panel-description>
+         </mat-panel-description> -->
 
          
          
       </mat-expansion-panel-header>
      
-      <table *ngIf="e.separatedSeats"> 
-         <td >
+      <table *ngIf="e.separatedSeats" class="t1"> 
+         <td class="t1" >
                <p>Separated seats</p>
          </td>
-         <td>
+         <td class="t1">
                <p>{{e. numTablesMale}} tables in men section</p><br>
                <p>{{e. numChairsMale}} chairs per table</p>
          </td>
         
-         <td>
+         <td class="t1">
                <p>{{e. numTablesFemale}} tables in women section</p><br>
                <p>{{e. numChairsFemale}} chairs per table</p>
          </td>
-         <td>
+         <td class="t1">
             <p>Size of special table in men section</p><br>
             <p *ngIf="e.numSpecialTableChairsMale!=0">  {{e.numSpecialTableChairsMale}} chairs  </p> 
             <p *ngIf="e.numSpecialTableChairsMale==0">No special table in men section</p>
          </td>
-         <td>
+         <td class="t1">
             <p>Size of special table in women section</p><br>
             <p *ngIf="e.numSpecialTableChairsFemale!=0">  {{e.numSpecialTableChairsFemale}} chairs  </p> 
             <p *ngIf="e.numSpecialTableChairsFemale==0">No special table in women section</p>
          </td>
       </table>
-      <table *ngIf="!e.separatedSeats"> 
+      <table *ngIf="!e.separatedSeats" class="t1"> 
 
-         <td>
+         <td class="t1">
                <p>{{e.numTablesMale}} tables in this event</p><br>
                <p>{{e. numChairsMale}} chairs per table</p>
 
          </td>
-         <td>
+         <td class="t1">
             <p>Size of special table:</p><br>
             <p *ngIf="e.numSpecialTableChairsMale!=0">  {{e.numSpecialTableChairsMale}} chairs  </p> 
             <p *ngIf="e.numSpecialTableChairsMale==0">No special table</p>

@@ -12,6 +12,7 @@ export class Guest {
     public identifyImage?:ImageBitmap;
     public numFamilyMembersMale?:number;
     public numFamilyMembersFemale?:number;
+    public dataUrl?:string;
 
     /**
      *

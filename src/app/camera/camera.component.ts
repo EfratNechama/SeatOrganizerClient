@@ -59,6 +59,7 @@ public handleImage(webcamImage: WebcamImage): void {
 console.info('received webcam image', webcamImage);
 sessionStorage.setItem("guestImg", JSON.stringify(webcamImage));
 this.pictureTaken.emit(webcamImage);
+sessionStorage.setItem("pic", JSON.stringify(webcamImage));
 }
 public cameraWasSwitched(deviceId: string): void {
 console.log('active device: ' + deviceId);

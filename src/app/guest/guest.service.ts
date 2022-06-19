@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { Category } from 'src/models/Category';
 import { Guest } from 'src/models/Guest';
 import { ImageSnippet } from 'src/models/imageSnippet';
+import { LogIn } from 'src/models/LogIn';
+
 
 //--proxy-config src/proxy.config.json 
 @Injectable({
@@ -35,8 +37,8 @@ export class GuestService {
   getCategoryByEventId(id: number): Observable<any> {
     return this.http.get<Category[]>("api/Category/" + id);
   }
-  deleteGuest(gId: number): Observable<number> {
-    return this.http.delete<number>("api/Guest/one/" + gId);
+  deleteGuest(gId: number): Observable<any> {
+    return this.http.delete<number>("api/Guest/" + gId);
   }
 
 
@@ -46,10 +48,22 @@ export class GuestService {
   getGuestByGuestId(gId:number):Observable<Guest>{
     return this.http.get<Guest>("api/Guest/one/" + gId)
   }
-putGuestAfterConfirm(g:Guest,guestImg:WebcamImage):Observable<Guest>{
- const formData = new FormData();
-  formData.append('image', guestImg.imageAsBase64);
-  return this.http.put<Guest>("api/Guest/image/"+ g.id, formData)
-}
+ putGuestAfterConfirm(g:Guest,img:any):Observable<Guest>{
+//  const formData = new FormData();
+ g.dataUrl=img._imageAsDataUrl;
+ return this.http.put<Guest>("api/Guest/"+g.id,g)
+  // formData.append('image', guestImg.imageAsBase64);
 
+
+
+
+// let image:GuestImage={ 
+//   guestId:g.id.toString(),
+//   dataUrl:guestImg._imageAsDataUrl,
+//   eventId:g.eventId
+// }
+
+//  
+// }
+ }
 }

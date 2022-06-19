@@ -33,21 +33,38 @@
     margin: auto;
   
     width: 80%;
-    opacity: 0.75;
+    opacity: 0.89;
 
   
 
     
   }
 
-.tbl mat-icon{
+.iconNotVisible{
   visibility:hidden;
 }
 
 .tbl:hover mat-icon{
   visibility:visible;
 }
+.a1{
+  width: 18%;
+}
+.a3{
+  width: 28%;
+  opacity: 0.9;
+}
+.a4{
+  width: 15%;
+  opacity: 0.7;
+}
+.a5{
+  width: 8%;
+}
 
+.t1 {
+  border: 0.5px solid;
+}
 // .mat-panel-description{
 //     // display: flex;
 //     // justify-content: space-between;

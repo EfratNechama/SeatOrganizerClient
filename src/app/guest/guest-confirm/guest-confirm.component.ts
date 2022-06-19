@@ -66,6 +66,7 @@ this._imComming=!this._imComming;
     
       this._guestImg=JSON.parse(sessionStorage.getItem("guestImg")!);
       console.log(this._guestImg);
+      this._guest.dataUrl=this._guestImg.imageAsDataUrl;
      this._guestService.putGuestAfterConfirm(this._guest,this._guestImg).subscribe(succ=>{console.log(succ,this._afterSubmit=true)})
      
   

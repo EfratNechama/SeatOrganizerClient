@@ -88,7 +88,7 @@ err=>{
     // debugger;
   //  this._categoryName=stringify(cat);
     this._guest = this.guestDetailsForm.value;
-    this._guestService.postGuest(this._guest, true).subscribe(succ => { console.log(this._guest, 'send') }, err => { console.log("error") })
+    this._guestService.postGuest(this._guest, true).subscribe(succ => { console.log(this._guest, 'send') })
     this.dialogRef.close();
 
   }

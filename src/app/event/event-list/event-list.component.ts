@@ -84,7 +84,10 @@ export class EventListComponent implements OnInit {
  
 
   }
-
+  sendEmailToAllGuests(eventId:Number)
+  {
+    this._eventService.sendEmailToAllGuests(eventId).subscribe(succ=>(console.log("send email to all worked!")));
+  }
 
 
 

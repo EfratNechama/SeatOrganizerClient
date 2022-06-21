@@ -40,7 +40,12 @@
                         <!-- <button (click)="doPlacement(e)" mat-raised-button color="black"> Placement</button> -->
                      </mat-panel-description>
                   </td>
-                
+                <td class="a5">
+                  <mat-panel-description class="hide"> 
+                        
+                     <mat-icon (click)="sendEmailToAllGuests(e.id)" mat-raised-button color="black"  matTooltip="send email to all guests"> email</mat-icon> 
+                  </mat-panel-description> 
+                </td>
                   <td class="a5">
                      <mat-panel-description class="hide"> 
                         
@@ -50,6 +55,61 @@
                </tr>
             </table>
         
+
+
+         
+         
+      </mat-expansion-panel-header>
+     
+      <table *ngIf="e.separatedSeats" class="t1"> 
+         <td class="t1" >
+            <b>Separated seats</b>
+         </td>
+         <td class="t1">
+            <b>tables in men section: </b>{{e. numTablesMale}} 
+            <br>
+               <b>chairs per table: </b>{{e. numChairsMale}}
+         </td>
+        
+         <td class="t1">
+            <b>tables in women section: </b>{{e. numTablesFemale}}
+            <br>
+            <b>chairs per table: </b>{{e. numChairsFemale}}
+
+         </td>
+         <td class="t1">
+            <b>Size of special table in men section: </b>
+            <p *ngIf="e.numSpecialTableChairsMale!=0">  {{e.numSpecialTableChairsMale}} chairs  </p> 
+            <p *ngIf="e.numSpecialTableChairsMale==0">No special table in men section</p>
+         </td>
+         <td class="t1">
+           
+            <b>Size of special table in women section: </b>
+            <p *ngIf="e.numSpecialTableChairsFemale!=0">  {{e.numSpecialTableChairsFemale}} chairs  </p> 
+            <p *ngIf="e.numSpecialTableChairsFemale==0">No special table in women section</p>
+         </td>
+      </table>
+      <table *ngIf="!e.separatedSeats" class="t1"> 
+
+         <td class="t1">
+            <b> tables in this event: </b>{{e. numTablesMale}} 
+         
+         </td>
+         <td class="t1">
+            <b>chairs per table: </b>{{e. numChairsMale}}
+         </td>
+         <td class="t1">
+            <b>Size of special table: </b>
+            <p class="p1" *ngIf="e.numSpecialTableChairsMale!=0">  {{e.numSpecialTableChairsMale}} chairs  </p> 
+            <p class="p1" *ngIf="e.numSpecialTableChairsMale==0">  No special table</p>
+ 
+         </td>
+        
+      </table>
+   </mat-expansion-panel>
+
+</mat-accordion>
+
          <!-- <mat-panel-title>
             {{e.name}}
          </mat-panel-title>
@@ -68,50 +128,3 @@
          <mat-panel-description class="hide"> 
             <mat-icon (click)="deleteEvent(e)" mat-raised-button color="black"> delete</mat-icon> 
          </mat-panel-description> -->
-
-         
-         
-      </mat-expansion-panel-header>
-     
-      <table *ngIf="e.separatedSeats" class="t1"> 
-         <td class="t1" >
-               <p>Separated seats</p>
-         </td>
-         <td class="t1">
-               <p>{{e. numTablesMale}} tables in men section</p><br>
-               <p>{{e. numChairsMale}} chairs per table</p>
-         </td>
-        
-         <td class="t1">
-               <p>{{e. numTablesFemale}} tables in women section</p><br>
-               <p>{{e. numChairsFemale}} chairs per table</p>
-         </td>
-         <td class="t1">
-            <p>Size of special table in men section</p><br>
-            <p *ngIf="e.numSpecialTableChairsMale!=0">  {{e.numSpecialTableChairsMale}} chairs  </p> 
-            <p *ngIf="e.numSpecialTableChairsMale==0">No special table in men section</p>
-         </td>
-         <td class="t1">
-            <p>Size of special table in women section</p><br>
-            <p *ngIf="e.numSpecialTableChairsFemale!=0">  {{e.numSpecialTableChairsFemale}} chairs  </p> 
-            <p *ngIf="e.numSpecialTableChairsFemale==0">No special table in women section</p>
-         </td>
-      </table>
-      <table *ngIf="!e.separatedSeats" class="t1"> 
-
-         <td class="t1">
-               <p>{{e.numTablesMale}} tables in this event</p><br>
-               <p>{{e. numChairsMale}} chairs per table</p>
-
-         </td>
-         <td class="t1">
-            <p>Size of special table:</p><br>
-            <p *ngIf="e.numSpecialTableChairsMale!=0">  {{e.numSpecialTableChairsMale}} chairs  </p> 
-            <p *ngIf="e.numSpecialTableChairsMale==0">No special table</p>
-         </td>
-        
-      </table>
-   </mat-expansion-panel>
-
-</mat-accordion>
-

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { WebcamImage } from 'ngx-webcam';
 import { Observable } from 'rxjs';
 import { Category } from 'src/models/Category';
+import { CategoryPerEvent } from 'src/models/CategoryPerEvent';
 import { Guest } from 'src/models/Guest';
 import { ImageSnippet } from 'src/models/imageSnippet';
 import { LogIn } from 'src/models/LogIn';
@@ -13,7 +14,7 @@ import { LogIn } from 'src/models/LogIn';
   providedIn: 'root'
 })
 export class GuestService {
-
+_categoryList!:Category[];
   constructor(private http: HttpClient) {
 
   }
@@ -41,7 +42,9 @@ export class GuestService {
     return this.http.delete<number>("api/Guest/" + gId);
   }
 
-
+  sendEmailToAllGuests(eventId:Number):Observable<any>{
+    return this.http.put<any>("/api/Guest/sendEmailToAll" ,eventId);
+  }
 
 
   ///for confirmation

@@ -79,7 +79,9 @@ calcPlace(e?:Event):Observable<any>{
   return this.http.post<any>("/api/Placement/" ,e);
 }
 
-
+sendEmailToAllGuests(eventId:Number):Observable<any>{
+  return this.http.put<any>("/api/Guest/sendEmailToAll" ,eventId);
+}
 
 
 

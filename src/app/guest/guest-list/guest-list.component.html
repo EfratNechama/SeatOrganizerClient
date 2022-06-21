@@ -1,137 +1,58 @@
 
 <div class="btn-add-guest">
    
-    <button (click)="newGuest()" mat-raised-button color="white" >
+    <button (click)="newGuest()" mat-raised-button style="color:white; background-color:black" >
        <mat-icon>add</mat-icon>Add guest
     </button>
+    <button (click)="sendEmailToAllGuests(_eventId)" mat-raised-button style="color:white; background-color:black" >
+      <mat-icon>email</mat-icon>send email to all guests
+   </button>
  </div>
- 
+
  <mat-accordion *ngFor="let g of _guestList" class="tbl" style="width:70%">
     <mat-expansion-panel hideToggle class="tbl">
        <mat-expansion-panel-header>
-          <!-- <mat-panel-title>
-             This is the name of the event
-          </mat-panel-title> -->
-          <mat-panel-description> 
-            {{g.firstName}} {{g.lastName}}
-          </mat-panel-description>
-          <mat-panel-description> 
+          <table>
+             <tr>
+                <td class="a1">
+                  <mat-panel-description> 
+                     <u><b>{{g.firstName}} {{g.lastName}}</b></u> 
+                    </mat-panel-description>
+                </td>
+                <td class="a2">
+                  <mat-panel-description> 
           
-             <mat-icon *ngIf="g.confirmed" matTooltip="confirmed">done</mat-icon>
-             <mat-icon *ngIf="!g.confirmed" matTooltip="haven't confirmed yet">clear</mat-icon>
-          </mat-panel-description>
-          <mat-panel-description> 
-              <mat-icon matTooltip="Send guest an email" (click)="sendEmail(g)" mat-raised-button color="black">send</mat-icon>
-           
-          </mat-panel-description>
-          <mat-panel-description> 
-              <mat-icon matTooltip="Delete guest" (click)="deleteGuest(g)" mat-raised-button color="black">delete</mat-icon>
-             
-          </mat-panel-description>
-          
-          
-       </mat-expansion-panel-header>
-    <table >
-        <td> {{g.phone}}</td>
-        <td>{{g.email}}</td>
-      <!-- <td>{{g.categoryId}}</td> -->
-        <td>{{g.userId}}</td>
+                     <mat-icon *ngIf="g.confirmed" matTooltip="confirmed">done</mat-icon>
+                     <mat-icon *ngIf="!g.confirmed" matTooltip="haven't confirmed yet">clear</mat-icon>
+                  </mat-panel-description>
+                </td >
+                <td class="a2">
+                  <mat-panel-description> 
+                     <mat-icon matTooltip="Send guest an email" (click)="sendEmail(g)" mat-raised-button color="black">send</mat-icon>
+                  
+                 </mat-panel-description>
+                </td>
+                <td class="a2">
+                  <mat-panel-description> 
+                     <mat-icon matTooltip="Delete guest" (click)="deleteGuest(g)" mat-raised-button color="black">delete</mat-icon>
+                    
+                 </mat-panel-description>
+                </td>
+             </tr>
+          </table>
+         </mat-expansion-panel-header>
 
+       
+    <table >
+       <tr>
+        <td class="a3"><b> phone number: </b>{{g.phone}}</td>
+        <td class="a3"><b>email adress: </b>{{g.email}}</td>
+        <td class="a3"><b>num members: </b>{{g.numFamilyMembersMale}}</td>
+        <td *ngFor="let c of _categoryList">
+         <p *ngIf="c.id==g.categoryId"><b>gruop: </b>{{c.name}}</p>
+        </td>
+        <!-- <td class="a3"><b>gruop: </b>{{g.categoryId}}</td> -->
+      </tr>
     </table>
       
-       <!-- <table *ngIf="e.separatedSeats"> 
-          <td >
-                <p>Separated seats</p>
-          </td>
-          <td>
-                <p>{{e. numTablesMale}} tables in men section</p><br>
-                <p>{{e. numChairsMale}} chairs per table</p>
-          </td>
-         
-          <td>
-                <p>{{e. numTablesFemale}} tables in women section</p><br>
-                <p>{{e. numChairsFemale}} chairs per table</p>
-          </td>
-          <td>
-             <p>Size of special table in men section</p><br>
-             <p *ngIf="e.numSpecialTableChairsMale!=0">  {{e.numSpecialTableChairsMale}} chairs  </p> 
-             <p *ngIf="e.numSpecialTableChairsMale==0">No special table in men section</p>
-          </td>
-          <td>
-             <p>Size of special table in women section</p><br>
-             <p *ngIf="e.numSpecialTableChairsFemale!=0">  {{e.numSpecialTableChairsFemale}} chairs  </p> 
-             <p *ngIf="e.numSpecialTableChairsFemale==0">No special table in women section</p>
-          </td>
-       </table>
-       <table *ngIf="!e.separatedSeats"> 
- 
-          <td>
-                <p>{{e.numTablesMale}} tables in this event</p><br>
-                <p>{{e. numChairsMale}} chairs per table</p>
- 
-          </td>
-          <td>
-             <p>Size of special table:</p><br>
-             <p *ngIf="e.numSpecialTableChairsMale!=0">  {{e.numSpecialTableChairsMale}} chairs  </p> 
-             <p *ngIf="e.numSpecialTableChairsMale==0">No special table</p>
-          </td>
-         
-       </table> -->
-    </mat-expansion-panel>
- 
- </mat-accordion>
- 
- 
-
-
-
-
-
-
-<!-- 
-
-
-<div class="btn-add-guest">
-   
-   <button (click)="newGuest()" mat-raised-button color="primary" >
-      <mat-icon>add</mat-icon>Add guest
-   </button>
-</div>
-
-<table>
-    <tr *ngFor="let g of _guestList">
-        <td>
-           first name: {{g.firstName}}
-        </td>
-        <td>
-            last name: {{g.lastName}}
-         </td>
-        <td>
-            phone: {{g.phone}}
-        </td>
-        <td>
-            email: {{g.email}}
-        </td>
-        <td>
-            confirmed: {{g.confirmed}}
-        </td>
-        <td>
-            categoryId: {{g.confirmed}}
-        </td>
-        <td>
-            userId: {{g.userId}}
-        </td>
-        <td>
-           <button>update details</button>
-        </td>
-        <td>
-           <button > send email </button>
-        </td>
-        <td>
-           <button (click)="deleteGuest(g)"> delete guest </button>
-        </td>
-    </tr>
-</table>
- <app-guest-details *ngIf="_show" #guestDetails></app-guest-details> -->
-
 

@@ -2,10 +2,15 @@
     margin: auto;
   
     width: 80%;
-    opacity: 0.75;
+    opacity: 0.89;
 }
 .btn-add-guest{
     margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+  }
+  .btn-send-email-all{
+    margin-left: 15%;
     margin-top: 5%;
     margin-bottom: 2%;
   }
@@ -16,7 +21,7 @@
     border-collapse: separate;
     border-spacing: 2px;
     border-color: gray;
-   
+    margin: auto;
   }
 
 
@@ -28,8 +33,16 @@
     visibility:visible;
   }
 
-
-
+.a1{
+width: 20%;
+}
+.a2
+{
+width: 5%;
+}
+.a3{
+  width: 30%;
+}
   ::ng-deep .success{
     background: green;
   }

@@ -39,19 +39,24 @@ onCreateUser:EventEmitter<User>=new EventEmitter();
 
   })
 
+  handleKeyUp(e:any){
   
+    if(e.keyCode === 13 && this.registerForm.valid){
+       this.register();
+    }
+ }
 
-  register(){
+  register(e?:any){
     this._userService._user=this.registerForm.value;
     console.log(this._userService._user);
     //this.onCreateUser.emit(this._user);
     this._userService.createNewUser(this._userService._user).subscribe(
       succes=>{
-    alert("succes create user");
+    console.log("succeded to create user");
     this._route.navigate(['/event-list',this._userService._user])
       },
       err=>{
-        alert("failed create user");
+        alert("failed to create user");
       }
     )
   }

@@ -19,6 +19,7 @@ import { GuestConfirmComponent } from './guest/guest-confirm/guest-confirm.compo
 import { DisplayPlacementComponent } from './placement/display-placement/display-placement.component';
 import {WebcamModule} from 'ngx-webcam';
 import { CameraComponent } from './camera/camera.component';
+import { FaceRecognitionComponent } from './face-recognition/face-recognition.component';
 
 
 @NgModule({
@@ -27,6 +28,8 @@ import { CameraComponent } from './camera/camera.component';
     GuestConfirmComponent,
     DisplayPlacementComponent,
     CameraComponent,
+    FaceRecognitionComponent,
+  
    
     // RegistrationComponentComponent,
     // LoginComponentComponent,
@@ -47,6 +50,7 @@ import { CameraComponent } from './camera/camera.component';
       { path: 'guest-details', component: GuestDetailsComponent },
       { path: 'guest-confirm', component: GuestConfirmComponent },
       { path: 'display-placement', component: DisplayPlacementComponent },
+      { path: 'face-recognition', component: FaceRecognitionComponent },
       {path:'home' ,component: AppComponent},
     ],
       { useHash: true }),

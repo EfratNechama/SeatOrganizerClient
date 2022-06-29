@@ -3,14 +3,15 @@
 </mat-toolbar> -->
 <mat-card class="my-card">
    <mat-card-content >
-       <form [formGroup]="loginForm" class="my-form">
+       <form [formGroup]="loginForm" (ngSubmit)="login($event)" class="my-form" >
          
         <h1 mat-dialog-title style="font-weight: bold;">Welcome</h1>
         <br>
               <div>
               <mat-form-field  appearance="fill">
                  <mat-label>Email</mat-label>
-                 <input  matInput   matInput [type]="hide ? 'email' : 'text'"  name="email"formControlName="email" >
+                 <input  matInput   matInput [type]="hide ? 'email' : 'text'"  name="email"formControlName="email"
+                 (keyup)="handleKeyUp($event)"  >
                  <mat-icon matSuffix>email</mat-icon>
               </mat-form-field>
            </div>
@@ -18,7 +19,8 @@
               <div>
                  <mat-form-field appearance="fill">
                    <mat-label>Enter your Password</mat-label>
-                   <input matInput [type]="hide ? 'password' : 'text'" id="password" formControlName="password">
+                   <input matInput [type]="hide ? 'password' : 'text'" id="password" formControlName="password"
+                   (keyup)="handleKeyUp($event)" >
                    <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                      {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                  </mat-form-field>
@@ -28,8 +30,8 @@
      </mat-card-content>
 
 
-   <mat-card-actions class="my-form">
-     <button  [disabled]="loginForm.invalid" (click)="login()" mat-raised-button style="color:white; background-color:black" >LOGIN
+   <mat-card-actions class="my-form" >
+     <button  [disabled]="loginForm.invalid" (click)="login()"  mat-raised-button style="color:white; background-color:black" >LOGIN
    </button>
 
    </mat-card-actions>

@@ -1,12 +1,12 @@
 
 <div class="btn-add-guest">
    
-    <button (click)="newGuest()" mat-raised-button style="color:white; background-color:black" >
-       <mat-icon>add</mat-icon>Add guest
+    <button (click)="newGuest()" mat-raised-button style="color:white; background-color:black"  matTooltip="Add guest" >
+       <mat-icon>group_add</mat-icon>
     </button>
-    <button (click)="sendEmailToAllGuests(_eventId)" mat-raised-button style="color:white; background-color:black" >
+    <!-- <button (click)="sendEmailToAllGuests(_eventId)" mat-raised-button style="color:white; background-color:black" >
       <mat-icon>email</mat-icon>send email to all guests
-   </button>
+   </button> -->
  </div>
 
  <mat-accordion *ngFor="let g of _guestList" class="tbl" style="width:70%">

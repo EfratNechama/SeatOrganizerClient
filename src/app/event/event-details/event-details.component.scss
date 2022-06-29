@@ -5,6 +5,7 @@
     height: 100%;
     width: 100%;
     text-align: center;
+    position: relative
   }
   .inputNumber{
     width: 10%;
@@ -28,9 +29,8 @@
 }
 .b{
   position: absolute;
-  bottom: 20%;
-  margin-left: 50%;
-  
+  bottom: 0;
+  right: 0;
 }
 
 #fileUpload {
@@ -49,3 +49,7 @@
     margin: auto;
     
   } 
+
+  // .mat-checkbox{
+  //   color:;
+  // }

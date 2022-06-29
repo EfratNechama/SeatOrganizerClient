@@ -32,7 +32,15 @@ loginForm:FormGroup=new FormGroup({
 
 
 
-login()
+handleKeyUp(e:any){
+  
+   if(e.keyCode === 13 && this.loginForm.valid){
+      this.login();
+   }
+}
+
+
+login(e?:any)
 {
   this.loginUser=this.loginForm.value;
   console.log(this.loginUser);

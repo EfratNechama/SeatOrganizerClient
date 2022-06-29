@@ -123,6 +123,13 @@ isEditable = false;
     "name": new FormControl()
   })
 
+//   handleKey(cat:any, e:any ){
+  
+//     if(e.keyCode === 13){
+//        this.addPersonalCategory(cat);
+//     }
+//  }
+
   addCategoryGroup() {
     // return new FormGroup({
     //   "id": new FormControl(),
@@ -215,7 +222,7 @@ isEditable = false;
       // err => { alert("can't get category :( ") }
     )
   }
-  addPersonalCategory(c: string) {
+  addPersonalCategory(c: string, e?:any) {
     // this._personalCategory.push(c);
     this._generalCategory.push({name: c, selected: true} as Category);
     this.newCategory.setValue(null);

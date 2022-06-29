@@ -59,11 +59,13 @@
              </table>
              
                <br>
-               
+<!--                
                <mat-checkbox (click)="wantSpecial()" >You can create one special table. Do you want?
-               </mat-checkbox>
+               </mat-checkbox> -->
+               <input type="checkbox" [checked]="_special"  (change)="wantSpecial()">Is there a special table?
+
                <div *ngIf="_special">
-                  <mat-form-field appearance="fill"class="inputNumber" style="width:40%">
+                  <mat-form-field appearance="fill"class="inputNumber" style="width:30%">
                      <mat-label> How many chairs in special table?</mat-label>
                      <input type="number" formControlName="numSpecialTableChairsMale" matInput>
                   </mat-form-field>
@@ -79,10 +81,10 @@
 
          <mat-step (click)="selectCategory()">
             <form [formGroup]="eventDetailsForm">
-             <ng-template matStepLabel   >Group</ng-template>
+             <ng-template matStepLabel >Group</ng-template>
       
           <mat-label><b>Choose groups for your guests</b></mat-label>
-        
+        <br>
               <br>
               <section class="example-section" >
                  <div *ngFor="let c of _generalCategory">
@@ -91,11 +93,15 @@
                     </p>
                  </div>
                  <div >
-                    <mat-form-field appearance="fill" >
+                    <mat-form-field appearance="fill" style="width:25%">
                      <!-- <mat-form-field appearance="fill"  *ngIf="_personalCat"> -->
-                       <mat-label> Add</mat-label>
-                       <input #addedCat matInput [formControl]="newCategory">
-     
+                       <mat-label> Add group</mat-label>
+                       <input #addedCat matInput [formControl]="newCategory"
+                       (keydown.enter)="$event.preventDefault()"
+                       (keydown.enter)="addPersonalCategory(newCategory.value)"
+                       >
+                       <!-- (keyup)="handleKeyUp(newCategory.value, $event)" -->
+
                     </mat-form-field>
                 
                        <mat-icon matTooltip="Add" style="cursor: pointer;" (click)="addPersonalCategory(newCategory.value)" >add</mat-icon>
@@ -112,7 +118,8 @@
           </mat-step>
          <mat-step>
            <ng-template matStepLabel>Done</ng-template>
-           <h3>Make sure you enter all the exact details
+           <br>
+           <h3>Make sure you entered all details correctely 
           <br>
             And click to save the event
             <br>
@@ -127,11 +134,11 @@
          
            </div>
          </mat-step>
-
+<!-- 
          <div class="b">
             <button mat-button matStepperPrevious >Back</button>
         
-          </div>
+          </div> -->
        </mat-stepper>
 
 

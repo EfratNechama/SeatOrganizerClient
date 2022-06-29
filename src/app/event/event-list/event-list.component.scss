@@ -48,18 +48,18 @@
   visibility:visible;
 }
 .a1{
-  width: 18%;
+  width: 15%;
 }
 .a3{
-  width: 28%;
+  width: 55%;
   opacity: 0.9;
 }
 .a4{
-  width: 15%;
+  width: 30%;
   opacity: 0.7;
 }
 .a5{
-  width: 8%;
+  width: 10%;
 }
 .p1{
   display:inline;
@@ -78,3 +78,6 @@
 // .mat-expansion-panel-header{
 //   align-content:space-between;
 // }
+::ng-deep .success{
+  background: green;
+}

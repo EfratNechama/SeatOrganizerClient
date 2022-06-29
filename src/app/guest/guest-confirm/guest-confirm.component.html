@@ -9,9 +9,9 @@
           
          <h1 mat-dialog-title style="font-weight: bold;">Welcome to our application</h1>
          <br>
-         <h3 mat-dialog-title style="font-weight: bold;">you invited to {{_event.name}}</h3>
-         <h3>To be held on  {{_event.eventDate|date:'dd/MM/yyyy'}}</h3>
-         <br>
+         <h3 mat-dialog-title style="font-weight: bold;">you are invited to {{_event.name}}</h3>
+         <h3>To be held on  {{_event.eventDate|date:'dd-MM-yyyy'}}</h3>
+        
          <!-- <mat-checkbox (click)="imComming()">I confirm participation -->
             
 
@@ -22,7 +22,7 @@
         <div *ngIf="this._guest.categoryId!=168"  class="ourDiv">
             <div *ngIf="!_event.separatedSeats">
                 <p>How many family members are comming?           <mat-form-field appearance="fill"class="inputNumber">
-                  <input type="number" id="numMale" matInput>
+                  <input type="number" id="numMale" [defaultValue]="1" matInput>
                </mat-form-field></p>
 
             </div>
@@ -61,7 +61,7 @@
             <mat-icon style="font-size: 80px">check_circle</mat-icon>
            <h2>You have successfully confirmed your participation in: </h2>
            <h1> {{_event.name}}</h1>
-           <h2>To be held on: {{_event.eventDate}} </h2>
+           <h2>To be held on: {{_event.eventDate|date:'dd-MM-yyyy'}} </h2>
            <h3>waiting for you!😃😃😃 </h3>
            <p>
             To create your own personal account<br>

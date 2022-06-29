@@ -28,12 +28,16 @@
                      </mat-panel-description>
                   </td>
                   <td class="a5">
+                     <button mat-raised-button (click)="goToRecognition()">go to recognition</button>
+                  </td>
+                  <td class="a5">
                      <mat-panel-description class="hide"> 
                         <img src="assets\guest.png" class="a4" (click)="viewGuest(e)" mat-raised-button color="black" matTooltip="Invite guests">
                         <!-- <mat-icon (click)="viewGuest(e)" >groups</mat-icon> -->
                         <!-- <button (click)="viewGuest(e)" mat-raised-button color="black"> view my guests </button> -->
                      </mat-panel-description>
                   </td>
+               
                   <td class="a5">
                      <mat-panel-description class="hide"> 
                         <img src="assets\icon_placement.jpg" class="a3" (click)="doPlacement(e)" mat-raised-button color="black" matTooltip="Placement">
@@ -43,7 +47,7 @@
                 <td class="a5">
                   <mat-panel-description class="hide"> 
                         
-                     <mat-icon (click)="sendEmailToAllGuests(e.id)" mat-raised-button color="black"  matTooltip="send email to all guests"> email</mat-icon> 
+                     <mat-icon (click)="sendEmailToAllGuests(e.id)" mat-raised-button color="black"  matTooltip="send emails to all guests"> email</mat-icon> 
                   </mat-panel-description> 
                 </td>
                   <td class="a5">

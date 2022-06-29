@@ -6,6 +6,8 @@ import { Event } from 'src/models/Event';
 import { UserService } from 'src/app/user/user.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EventDetailsComponent } from '../event-details/event-details.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 // import { loadavg } from 'os';
 
 
@@ -17,9 +19,9 @@ import { EventDetailsComponent } from '../event-details/event-details.component'
 export class EventListComponent implements OnInit {
 
 
-  constructor(private _eventService: EventService, private _activatedRoute: ActivatedRoute, private _userService: UserService,
+  constructor( private _eventService: EventService, private _activatedRoute: ActivatedRoute, private _userService: UserService,
     public dialog: MatDialog,
-    private _route: Router) {
+    private _route: Router,private _snackBar: MatSnackBar,) {
     this._user = this._userService._user;
     console.log(this._user.userName);
   }
@@ -86,9 +88,12 @@ export class EventListComponent implements OnInit {
   }
   sendEmailToAllGuests(eventId:Number)
   {
-    this._eventService.sendEmailToAllGuests(eventId).subscribe(succ=>(console.log("send email to all worked!")));
+    this._eventService.sendEmailToAllGuests(eventId).subscribe(succ=>(this._snackBar.open('Emails sent successfuly', '✔',{duration:4000,  verticalPosition: 'top',  panelClass: ['success']}
+    ) ));
   }
-
+  goToRecognition(){
+this._route.navigate(['/face-recognition'])
+  }
 
 
 }

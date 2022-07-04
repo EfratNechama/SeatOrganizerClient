@@ -91,7 +91,8 @@ export class EventListComponent implements OnInit {
     this._eventService.sendEmailToAllGuests(eventId).subscribe(succ=>(this._snackBar.open('Emails sent successfuly', '✔',{duration:4000,  verticalPosition: 'top',  panelClass: ['success']}
     ) ));
   }
-  goToRecognition(){
+  goToRecognition(e:Event){
+    sessionStorage.setItem("event",  JSON.stringify(e)); 
 this._route.navigate(['/face-recognition'])
   }
 

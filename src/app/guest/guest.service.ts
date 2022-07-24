@@ -53,20 +53,9 @@ _categoryList!:Category[];
   }
  putGuestAfterConfirm(g:Guest,img:any):Observable<Guest>{
 //  const formData = new FormData();
+
  g.dataUrl=img._imageAsDataUrl;
  return this.http.put<Guest>("api/Guest/"+g.id,g)
-  // formData.append('image', guestImg.imageAsBase64);
 
-
-
-
-// let image:GuestImage={ 
-//   guestId:g.id.toString(),
-//   dataUrl:guestImg._imageAsDataUrl,
-//   eventId:g.eventId
-// }
-
-//  
-// }
  }
 }

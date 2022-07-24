@@ -1,0 +1,57 @@
+
+<div class="a">
+    <mat-card  class="my-card">
+   <mat-card-content>
+        <form class="my-form">
+          
+         <h1 style="font-weight: bold;">Welcome to   {{_event.name}}</h1>
+       
+        
+         Thank you for comming!
+         <br>
+         To find you're table in the hall open face recognition
+
+         <br>
+         <div *ngIf="_beforeReco">
+          
+           <app-camera (pictureTaken)="handleImage($event)"></app-camera>
+          
+           <!-- <div class="snapshot" *ngIf="webcamImage">
+        
+         </div> -->
+   
+      <button (click)="goToRecognition()" mat-raised-button style="color:white; background-color:black" >Find your seat
+      </button>
+     </div>
+  
+
+
+<!-- <div *ngIf="!_beforeReco">
+  <ul>
+    {{_recognizedGuest.tableIdList }}
+    <li *ngFor=" let y of _recognizedGuest.numChairsList, let x of _recognizedGuest.tableIdList">
+      <h2>Go to table {{x}}, {{y}} seats</h2>
+  </li>
+</ul>  
+
+</div> -->
+<div *ngIf="!_beforeReco">
+  <ul>
+    <li *ngFor=" let y of _recognizedGuest.numChairsList, let i=index">
+      <h2>Go to table {{_recognizedGuest.tableIdList[i]}}, {{y}} seats</h2>
+  </li>
+  <div *ngIf="_recognizedGuest.numChairsList.length==0">
+    <h2>Sorry. Not found😢 <br>Make sure you confirmed arrival</h2>
+  </div>
+</ul>  
+
+</div>
+<!--  -->
+</form>
+</mat-card-content>
+</mat-card>
+
+
+<!-- <div *ngIf="!_beforeReco">
+<div *ngFor="let x of _recognizedGuest.tableIdList">x</div>
+</div> -->

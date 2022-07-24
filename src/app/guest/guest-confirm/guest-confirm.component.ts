@@ -40,6 +40,8 @@ export class GuestConfirmComponent implements OnInit {
   _openCamera:boolean=false;
   _guestImg!:WebcamImage;
   ngOnInit(): void {
+    sessionStorage.setItem("component", "gc")
+
     this._guestService.getGuestByGuestId(this._guestId).subscribe(succ=>{this._guest=succ;
     this._eventService.getEventbyEventId(this._guest.eventId).subscribe(s=>{this._event=s,console.log(s),this._flag=true})}
     );

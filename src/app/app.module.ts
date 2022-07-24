@@ -19,16 +19,22 @@ import { GuestConfirmComponent } from './guest/guest-confirm/guest-confirm.compo
 import { DisplayPlacementComponent } from './placement/display-placement/display-placement.component';
 import {WebcamModule} from 'ngx-webcam';
 import { CameraComponent } from './camera/camera.component';
-import { FaceRecognitionComponent } from './face-recognition/face-recognition.component';
+
+import { RecognitionModule } from './recognition/recognition.module';
+import { FaceRecognitionComponent } from './recognition/face-recognition/face-recognition.component';
+import { RecognitionConfirmComponent } from './recognition/recognition-confirm/recognition-confirm.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    CameraComponent,
     GuestConfirmComponent,
     DisplayPlacementComponent,
     CameraComponent,
-    FaceRecognitionComponent,
+    FaceRecognitionComponent
+    
+    
   
    
     // RegistrationComponentComponent,
@@ -51,11 +57,14 @@ import { FaceRecognitionComponent } from './face-recognition/face-recognition.co
       { path: 'guest-confirm', component: GuestConfirmComponent },
       { path: 'display-placement', component: DisplayPlacementComponent },
       { path: 'face-recognition', component: FaceRecognitionComponent },
+      { path: 'recognition-confirm', component: RecognitionConfirmComponent},
+
       {path:'home' ,component: AppComponent},
     ],
       { useHash: true }),
     EventModule,
     GuestModule,
+    RecognitionModule,
     //UserModule,
     MaterialModule,
     ReactiveFormsModule,
@@ -63,13 +72,14 @@ import { FaceRecognitionComponent } from './face-recognition/face-recognition.co
     FormsModule,
     BrowserAnimationsModule,
 
-
   ],
-  providers: [],
+  
+  providers: [CameraComponent, ],
   bootstrap: [AppComponent],
   exports: [
     MaterialModule,
      FormsModule,
+     CameraComponent
   ]
 })
 export class AppModule { }

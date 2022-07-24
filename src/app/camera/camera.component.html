@@ -1,5 +1,5 @@
 <div style="text-align:center">
-    <div>
+    <div *ngIf="this._fromComponent == 'gc'" >
         <table >
             <tr>
 
@@ -15,7 +15,7 @@
         </table>
 
 
-        <br> <button (click)="triggerSnapshot();" mat-raised-button style="color:white; background-color:black" >click here </button> 
+        <!-- <br> <button (click)="triggerSnapshot();" mat-raised-button style="color:white; background-color:black" >click here </button>  -->
 
    
     <br/>
@@ -24,7 +24,25 @@
     <div class="actionBtn" (click)="showNextWebcam(true);" title="Switch Camera">🔁</div>
     </div> -->
     </div>
-    <h4 *ngIf="errors.length > 0">Messages:</h4>
-    <ul *ngFor="let error of errors">
-    <li>{{error | json}}</li>
-    </ul>
+
+
+    <div *ngIf="this._fromComponent == 'fr' " >
+            <webcam [height]="250" [width]="250" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+            [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
+            (initError)="handleInitError($event)"></webcam>
+                   
+            <div class="actionBtn" (click)="triggerSnapshot();" ><mat-icon style="font-size: 300%;" matTooltip="snap"> add_photo_alternate</mat-icon>
+            </div>
+       
+        <br/>
+    </div>
+
+
+</div>
+
+
+
+<h4 *ngIf="errors.length > 0">Messages:</h4>
+<ul *ngFor="let error of errors">
+<li>{{error | json}}</li>
+</ul>

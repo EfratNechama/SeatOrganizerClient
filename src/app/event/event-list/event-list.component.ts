@@ -47,8 +47,7 @@ export class EventListComponent implements OnInit {
         console.log("get event succuss :) ");
         this._eventList = succ;
         console.log(succ);
-      },
-      err => { console.log("get event failed :) "); }
+      }
     )
   }
   

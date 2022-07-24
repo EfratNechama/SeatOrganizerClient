@@ -67,7 +67,6 @@ export class EventListComponent implements OnInit {
 
     });
   }
-  //this._route.navigate(['/event-details']);
 
   doPlacement(e:Event){
     this._eventService.calcPlace(e).subscribe(succ=>{console.log("placement success!");

@@ -1,0 +1,25 @@
+body{
+    // overflow: scroll;
+   
+  
+  position: relative;        /* for the footer to move with the page size */
+  min-height: 100%;  
+  max-height: max-content;        
+  padding-bottom: 6rem;   
+  }
+
+  .backImage
+  {
+ // height: 100%;
+ 
+ background-position: center;
+ //background-repeat: repeat;
+ background-size: cover;
+ background-attachment: fixed;
+ 
+  }
+
+img{
+    object-fit:contain;
+    margin: 2%;
+}

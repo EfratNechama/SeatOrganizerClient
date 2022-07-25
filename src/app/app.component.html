@@ -13,7 +13,7 @@
 <mat-toolbar conglor="primary" class="toolBar" >
   <mat-toolbar-row >
 
-    <span ><a mat-button href="/"  style="color:white">
+    <span ><a mat-button routerLink="/logo-image"  style="color:white">
       <mat-icon matSuffix>home</mat-icon>Home
       
     </a></span>
@@ -53,22 +53,10 @@
 <router-outlet></router-outlet>
 
 
-<!-- 
-<mat-card >
-<img src="assets\static\savedate.jpg">
-</mat-card> -->
 
 
 
 
-<!-- camera -->
-<!-- <br>
-<br>
-<br>
-<app-camera (pictureTaken)="handleImage($event)"></app-camera>
-<div class="snapshot" *ngIf="webcamImage">
-<img [src]="webcamImage.imageAsDataUrl" />
-</div> -->
 
 </main>
 

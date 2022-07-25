@@ -23,6 +23,7 @@ import { CameraComponent } from './camera/camera.component';
 import { RecognitionModule } from './recognition/recognition.module';
 import { FaceRecognitionComponent } from './recognition/face-recognition/face-recognition.component';
 import { RecognitionConfirmComponent } from './recognition/recognition-confirm/recognition-confirm.component';
+import { LogoImageComponent } from './logo-image/logo-image.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { RecognitionConfirmComponent } from './recognition/recognition-confirm/r
     GuestConfirmComponent,
     DisplayPlacementComponent,
     CameraComponent,
-    FaceRecognitionComponent
+    FaceRecognitionComponent,
+    LogoImageComponent
     
     
   
@@ -47,7 +49,7 @@ import { RecognitionConfirmComponent } from './recognition/recognition-confirm/r
     WebcamModule,
     BrowserModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: '/', pathMatch: 'full' },
+      { path: '', redirectTo: 'logo-image', pathMatch: 'full' },
       { path: 'register', component: RegistrationComponentComponent },
       { path: 'login', component: LoginComponentComponent },
       { path: 'event-list', component: EventListComponent },
@@ -58,6 +60,7 @@ import { RecognitionConfirmComponent } from './recognition/recognition-confirm/r
       { path: 'display-placement', component: DisplayPlacementComponent },
       { path: 'face-recognition', component: FaceRecognitionComponent },
       { path: 'recognition-confirm', component: RecognitionConfirmComponent},
+      { path: 'logo-image', component: LogoImageComponent},
 
       {path:'home' ,component: AppComponent},
     ],
